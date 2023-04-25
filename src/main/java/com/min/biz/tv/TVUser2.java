@@ -9,7 +9,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 // 다형성을 사용하는 이유 : 유지보수가 쉬워지기 때문에 !
 // 유지보수가 편하려면 다형성을 사용해야 한다.
 
-public class TVUser {
+public class TVUser2 {
 	
 	public static void main(String[] args) {
 	
