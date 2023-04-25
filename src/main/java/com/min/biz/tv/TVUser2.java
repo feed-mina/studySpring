@@ -17,20 +17,15 @@ public class TVUser2 {
 		GenericXmlApplicationContext container = new GenericXmlApplicationContext("applicationContext.xml");
 		
 		// 2. 스프링 컨테이너로부터 테스트할 객체를 검색(LookUp)한다.
-		 TV tv = (TV) container.getBean("tv");
-	
-		 // 디자인 패턴 적용	
-		// 마우스 오른쪽 클릭 > Run as > Run configuration > arguments > lg 또는 samsung
-	
-		 //		BeanFactory factory = new BeanFactory();
-		 //		TV tv = (TV) factory.getBean(args[0]);
-	
-		 //	 TV tv = new SamsungTV();
+		
+		TV tv = (TV) container.getBean("tv");
+		// TV tv = (TV) container.getBean("com.min.biz.tv.LGTV#0");
 		 tv.powerOn();
 		 tv.powerOff();
 		 tv.volumeUp();
 		 tv.volumeDown();
-
+		 // 3. 스프링 컨테이너를 종료한다. (컨테이너는 종료 직전에 자신이 생성한 객체들을 제거한다.)
+		 container.close();
 	}
 
 }

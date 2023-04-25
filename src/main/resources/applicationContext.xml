@@ -4,6 +4,17 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!-- 스프링 컨테이너가 생성할 객체 등록 -->
-<bean id="tv" class="com.min.biz.tv.LGTV"></bean>
- 
+<bean id="tv" class="com.min.biz.tv.SamsungTV" init-method="맴버변수초기화" destroy-method="자원해제" ></bean>
+
+
+<!-- <bean class="com.min.biz.tv.SamsungTV"></bean> -->
+<!-- <bean id="tv" class="com.min.biz.tv.LGTV" ></bean>  -->
+<!-- 스프링컨테이너가 객체들을 메모리에 띄어주는 시점은 Free로딩이기 때문에 컨테이너가 생성될때 객체들이 bean태그 순서대로 띄어진다.-->
+<!-- id 속성은 생략할 수 있으나 클래스 안에서 com.min.biz.tv.SamsungTV#0 처럼 #0를 붙어서 getBean을 해야 한다. id가 com.min.biz.tv.SamsungTV#0가 된다. --> 
+<!-- id의 역할은 id를 지정해 메모리에 떠있는 객체들을 unique하게 식별할 수 있다. -->
+<!-- 객체가 생성될때 default 생성자만 인지한다. 매개변수가 있는 생성자는 인지 할 수 없다. -->
+<!-- id와 name의 차이점 : id는 숫자로 시작할수없고 공백을 포함할수없고 특수기호 사용할 수 없다. 자바변수이름규칙을 따라야한다. 하지만 name은 예외를 허용한다. -->
+
+<!-- init-method 속성으로 맴버변수 초기화 설정을 등록할 수 있다. -->
+
 </beans>

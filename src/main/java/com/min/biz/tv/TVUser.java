@@ -30,6 +30,8 @@ public class TVUser {
 		 tv.powerOff();
 		 tv.volumeUp();
 		 tv.volumeDown();
+		 
+		 container.close();
 
 	}
 
