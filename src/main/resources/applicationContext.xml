@@ -4,11 +4,23 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!-- 스프링 컨테이너가 생성할 객체 등록 -->
-<bean id="tv" class="com.min.biz.tv.SamsungTV" init-method="맴버변수초기화" destroy-method="자원해제" ></bean>
+	<bean id="Ltv" class="com.min.biz.tv.LGTV" lazy-init="true"></bean>
+	<!-- lazy-init:false가 default가 된다. -->
+	
+	<bean id="tv" 
+		class="com.min.biz.tv.SamsungTV" 
+		init-method="맴버변수초기화" 
+		destroy-method="자원해제" 
+		scope="prototype"></bean>
 
+
+<!-- scope은 singleton 이 default가 된다. 메모리에 하나의 객체만 유지할 수 있다.-->
+<!-- scope이 prototype이라면 getbean을 할때마다 생성자가 매번생기고 ,맴버변수초기화도 매번 하게되고 주소도 전부 다르게 된다. 
+또한 lazy-init설정과 상관없이 Lazy Loading으로 구동방식을 바꾼다.-->
+<!-- SamsungTV는 FreeLoading이 된다.(원래 스프링컨테이너 방식) -->	
 
 <!-- <bean class="com.min.biz.tv.SamsungTV"></bean> -->
-<!-- <bean id="tv" class="com.min.biz.tv.LGTV" ></bean>  -->
+
 <!-- 스프링컨테이너가 객체들을 메모리에 띄어주는 시점은 Free로딩이기 때문에 컨테이너가 생성될때 객체들이 bean태그 순서대로 띄어진다.-->
 <!-- id 속성은 생략할 수 있으나 클래스 안에서 com.min.biz.tv.SamsungTV#0 처럼 #0를 붙어서 getBean을 해야 한다. id가 com.min.biz.tv.SamsungTV#0가 된다. --> 
 <!-- id의 역할은 id를 지정해 메모리에 떠있는 객체들을 unique하게 식별할 수 있다. -->
