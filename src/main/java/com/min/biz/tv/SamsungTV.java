@@ -1,21 +1,29 @@
 package com.min.biz.tv;
 
 public class SamsungTV implements TV {
-	private int price; // price는 초기화값으로 0이다
+	
+	private SonySpeaker speaker;
+	private int price;
 	
 	public SamsungTV() {
-		System.out.println("=====> SamsungTV생성");
+		System.out.println("=====> SamsungTV (1)생성");
+	}
+	// alt + shift + s > generate Constructor using field
+
+	// 원래는 매개변수를 적용한 매서드를 인식할 수 없다. 하지만 만약 SonySpeaker 객체를 매개변수로 받아서 초기화한 값을 적용할 수 있다면?
+	public SamsungTV(SonySpeaker speaker) {
+
+		System.out.println("=====> SamsungTV (2)생성");
+		this.speaker = speaker;
 	}
 	
-	public void 맴버변수초기화() {
-		System.out.println("=====> 맴버변수초기화()");
-		price = 1700000;
+	
+	public SamsungTV(SonySpeaker speaker, int price) {
+		System.out.println("=====> SamsungTV (3)생성");
+		this.speaker = speaker;
+		this.price = price;
 	}
-
-	public void 자원해제() {
-		System.out.println("=====> 자원해제()");
-		price = 0;
-	}
+	
 	public void powerOn() {
 		System.out.println("Samsung TV 전원 키다." + price);
 	}
@@ -24,11 +32,19 @@ public class SamsungTV implements TV {
 	}
 	
 	public void volumeUp() {
-		System.out.println("Samsung TV 소리 울리다." );
+		// speaker = new SonySpeaker();
+		speaker.volumeUp();
 	}
 	public void volumeDown() {
-		System.out.println("Samsung TV 소리 내린다.");
+		// speaker = new SonySpeaker();
+		speaker.volumeDown();
 	}
 	
+	
+//	Exception in thread "main" java.lang.NullPointerException => SonySpeaker 객체 할당 => volumeUp, volumeDown 매서드에 SonySpeaker 객체 할당 => 메모리 낭비 
+// 및 유지보수할때 sonyspeaker을 사용하지 않고 다른 speaker을 사용하게 될때 관련된 소스를 변경하기가 어렵다. (의존성이 생겼기 때문에) ==> Constructor injection(생성자 인젝션)으로 깔끔하게 해결할 수 있다.
+//	at com.min.biz.tv.SamsungTV.volumeUp(SamsungTV.java:26)
+//	at com.min.biz.tv.TVUser.main(TVUser.java:31)
+
 
 }
