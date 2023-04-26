@@ -1,0 +1,20 @@
+비즈니스 컴포넌트 : 데이터를 관리하는 컴포넌트
+
+비지니스 컴포넌트를 만드는 객체들이 메모리에 떠야 한다 : IoC (Inversion of Controll) 역제어
+IoC는 두가지 제어를 한다. 1 ) 객체 생성 2)
+
+1. 객체 생성을 스프링 컨테이너가 하려면 1) bean 등록 2) component annotation을 붙이는 방법으로 IoC 역제어를 할 수 있따.
+bean 등록 - 다른 객체로 바뀌거나 유지변경이 자주 된다.
+component annotation - 고정된 클래스
+
+Interface나 추상클래스는 추상매서드를 포함하기 때문에 객체 생성이 불가능하다.
+VO(value Object)객체는 스프링 컨테이너에서 생성하지 않고 클라이언트에서 생성한다. 
+비지니스 로직에 필요한 value object에 담아서 넘긴다.
+Interface와 VO를 제외한 DAO (data Access Object) 또는 ServiceImpl 클래스를 스프링 컨테이너가 객체생성한다. ( bean 등록이던, 컴포넌트를 사용하던)
+
+
+dependency Injection 1) 생성자 인젝션 2) setter 인젝션 3) @Autowired (type injection)
+ServiceImpl은 DAO타입의 참조변수를 멤버변수로 가지고 있다. 따라서 ServiceImpl은 DAO와 의존성 관계를 가지게 된다. 
+의존성 주입은 3가지 방법으로 Constructor injection , setter injection , @Autowired 사용하는 방법이 있다.
+
+
