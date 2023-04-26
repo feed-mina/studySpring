@@ -1,5 +1,8 @@
 package com.min.biz.tv;
 
+import org.springframework.stereotype.Component;
+
+// @Component 
 public class AppleSpeaker implements Speaker {
 	
 	// 다형성은 스프링, 프레임워크를 이해하는데 기본이여야 한다. 

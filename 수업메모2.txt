@@ -1,0 +1,35 @@
+* 스프링을 사용할때 가장 많이 발견하게 되는 오류는 NoSuchBeanDefinitionException 일 가능성이 높다. 
+
+-- @Autowired 어노테이션 사용할때 에러
+
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.min.biz.tv.SonySpeaker] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478)
+	... 14 more
+	
+메모리에 SonySpeaker 객체가 올라가있지 않는다. 
+1. @Component 어노테이션을 SonySpeaker 클래스 위에 적는다.
+2. Bean 등록을 한다. xml에 <bean class="com.min.biz.tv.SonySpeaker"></bean>
+둘다 아이디를 사용하지 않는다. : 아이디가 필요없다. -> 아이디가 필요한것은 컨테이너가 메모리에 띄어놓은것을 unique하게 식별할때 사용할때 id속성이 쓰인다. 
+
+
+내가 만든 클레스의 경우는 annotation이나 bean 등록으로 메모리를 생성할 수 있다. 하지만 내가 만들지 않은 클래스 (예를 들어 스프링 프레임워크나 3rd party 클래스, 다른 사람이 만든 클래스)의 경우 , 이런 클래스의 객체를 메모리에 띄우고 싶다면 ??
+
+ex) Log4jLoggerAdapter 등 내가 만들지 않은 클래스를 메모리에 띄우는 방법은 유일하게 bean 등록밖에 없다.
+
+어노테이션 설정이 등록한 배경은 과도한 xml설정을 줄이기 위해서이기 때문이다. xml설정을 아예 안하는 것이 아니라 xml설정의 부담을 줄이기 때문이다.
+
+
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No unique bean of type [com.min.biz.tv.Speaker] is defined: expected single matching bean but found 2: [appleSpeaker, sonySpeaker]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:800)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478)
+	... 14 more
+	
+-- Speaker 가 AppleSpeaker랑 SonySpeaker를 둘다 받을때	
+@Autowired 를 변수 위에 붙이면 type injection인데 메모리에 없어도 에러가 나고, 메모리에 있다면 unique하게 있어야한다. (중복이 되면 에러가 난다)
+
+@Autowired 뒤에 @Qualifier("객체id")로 id를 지정 가능하다.
+class이름에 첫글자를 소문자로
