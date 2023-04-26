@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!-- 스프링 컨테이너가 생성할 객체 등록 -->
@@ -11,13 +12,38 @@
 		class="com.min.biz.tv.SamsungTV" 
 		init-method="맴버변수초기화" 
 		destroy-method="자원해제" 
-		scope="prototype"></bean>-->
+		scope="prototype"></bean>
+	
+		<bean id="tv" class="com.min.biz.tv.GoogleTV">
+			<property name="speaker" ref="speaker"/>
+			<property name="price" value="1200000"/>
+		</bean>
+		
+	-->
 		
 		<bean id="speaker" class="com.min.biz.tv.SonySpeaker"></bean>
-		<bean id="tv" class="com.min.biz.tv.SamsungTV">
+		
+		<bean id="tv" class="com.min.biz.tv.GoogleTV" p:speaker-ref="speaker" p:price="10000000"/>
+		
+</beans>
+
+		<!-- <bean id="tv" class="com.min.biz.tv.SamsungTV">
 			<constructor-arg ref="speaker"/> 
 			<constructor-arg value="1500000"/>
 		</bean>
+		 -->
+		
+
+<!-- namespaces는 xml설정파일에 사용할 수 있는 태그나 속성을 규정하는 것, Namespaces에서 규정하는 이름을 사용한다. 컨테이너에 전혀 다른 작업을 시킬수 있다. -->
+
+<!-- 생성자 인젝션과 setter 인젝션은 결과는 똑같을 수 밖에 없다. 맴버변수를 초기화하거나 특정값을 지정하는것이기 때문에, 다른점은 생성자 injection인지 또는 setter injection인지 방법의 차이다. -->
+
+		
+<!--setter인젝션을 통해 GoogleTv의 setter매서드 지정으로 setter 뒤 매서드 이름을 적는다. speaker타입의 객체가 매개변수로 넘겨아 하는다. argument를 ref속성으로 넘긴다.  -->
+<!-- set스피커 매서드가 GoogleTV 매서드 생성된 직후에 set매서드로 setspeaker를 생성하고 인자로 id가 speaker인 SonySpeaker를 찾아서 넘긴다. -->
+
+
+
 <!-- 정수나 실수나 고정된 값을 전달할때는 constructor argument (생성자 argument)로 value 속성을 사용한다. -->
 <!-- xml파일을 통해 컨테이너 동작을 바꿀수 있다 ! tv 생성자가 만들때 생성자 argument로 id가 speaker인 생성자를 넘겨줘라 -->
 
@@ -37,4 +63,4 @@
 
 <!-- init-method 속성으로 맴버변수 초기화 설정을 등록할 수 있다. -->
 
-</beans>
+
