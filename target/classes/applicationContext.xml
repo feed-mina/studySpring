@@ -25,6 +25,22 @@
 		
 		<bean id="tv" class="com.min.biz.tv.GoogleTV" p:speaker-ref="speaker" p:price="10000000"/>
 		
+		<bean id="collection" class="com.min.biz.tv.CollectionBean">
+			<property name="addressList">
+				<!-- <list>
+					<value>쌍문동</value>
+					<value>면목동</value>
+					<value>창동</value>
+				</list> -->
+				
+				<props>
+					<prop key="둘리">쌍문동</prop>
+					<prop key="또치">면목동</prop>
+				</props>
+			</property>
+		</bean>
+		
+		
 </beans>
 
 		<!-- <bean id="tv" class="com.min.biz.tv.SamsungTV">
