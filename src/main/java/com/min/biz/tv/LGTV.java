@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 // 만약에 class이름이 복잡할 경우,  @("id이름")을 통해 설정할 수 있다.
 // @Component("tv")
 
-@Component("tv")
+// @Component("tv")
 public class LGTV implements TV {
 	
 	@Autowired // 3. Type injection이라고 부른다.
