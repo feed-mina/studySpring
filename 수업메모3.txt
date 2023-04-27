@@ -17,4 +17,16 @@ dependency Injection 1) 생성자 인젝션 2) setter 인젝션 3) @Autowired (t
 ServiceImpl은 DAO타입의 참조변수를 멤버변수로 가지고 있다. 따라서 ServiceImpl은 DAO와 의존성 관계를 가지게 된다. 
 의존성 주입은 3가지 방법으로 Constructor injection , setter injection , @Autowired 사용하는 방법이 있다.
 
+-- Spring은 Pom.xml 파일을 사용해서 dependency를 관리한다.
+
+1. VO (Value Object) 칼럼이름과 똑같은 변수를 getter, setter + tostring
+2. Vo를 매개변수와 return 타입으로 사용하면서 실질적인 데이터 처리 DAO 작성
+3. alt + shift + T : interface extract BoardService => selectAll => implements BoardService 가 생김 그러나 따로 작성
+4. Service 구현 클래스 : 서비스인터페이스를 implements 한 ServiceImpl 클래스를 작성
+
+
+
+
+
+
 

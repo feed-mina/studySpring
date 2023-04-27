@@ -33,3 +33,35 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No u
 
 @Autowired 뒤에 @Qualifier("객체id")로 id를 지정 가능하다.
 class이름에 첫글자를 소문자로
+
+
+
+-- h2 SYSDATE 오류 (?) 
+
+
+CREATE TABLE BOARD(
+	SEQ NUMBER(5) PRIMARY KEY,
+	TITLE VARCHAR2(200),
+	CONTENT VARCHAR2(20),
+	REGDATE DATE DEFAULT SYSDATE,
+	CNT NUMBER(5) DEFAULT 0
+);
+Column "SYSDATE" not found; SQL statement:
+CREATE TABLE BOARD(
+    SEQ NUMBER(5) PRIMARY KEY,
+    TITLE VARCHAR2(200),
+    CONTENT VARCHAR2(20),
+    REGDATE DATE DEFAULT SYSDATE,
+    CNT NUMBER(5) DEFAULT 0
+); [42122-214] 42S22/42122 (도움말)
+
+CREATE TABLE BOARD(
+    SEQ NUMBER(5) PRIMARY KEY,
+    TITLE VARCHAR2(200),
+    WRITER VARCHAR2(20),
+    CONTENT VARCHAR2(2000),
+    REGDATE DATE DEFAULT current_date,
+    CNT NUMBER(5) DEFAULT 0
+);
+
+** H2에서 SYSDATE 오류 > current_date 로 해결 ! **
