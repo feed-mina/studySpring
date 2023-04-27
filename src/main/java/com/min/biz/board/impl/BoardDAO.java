@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.min.biz.board.BoardVO;
@@ -14,7 +15,11 @@ import com.min.biz.common.JDBCUtil;
 
 // alt + shift + T : interface extract BoardService => selectAll => implements BoardService 가 생김 그러나 따로 작성
 // 2. Vo를 매개변수와 return 타입으로 사용하면서 실질적인 데이터 처리 DAO 작성
-@Repository("boardDAO")
+//@Repository("boardDAO")
+
+
+//@Component : 데이터베이스 연동을 처리하는 DAO 클래스에서는 @Component 어노테이션 대신  @Repository 를 사용하는게 낫다 
+@Repository
 public class BoardDAO { 
 		// JDBC 관련 변수 : 맴버변수 선언
 		private Connection conn = null;
@@ -28,7 +33,7 @@ public class BoardDAO {
 		private final String BOARD_UPDATE = "update board set title=?, content=?, where weq=?";
 		private final String BOARD_DELETE = "delete board where seq=?";
 		private final String BOARD_GET = "select * from board where weq=?";
-		private final String BOARD_LIST = "select * from board orter by seq desc";
+		private final String BOARD_LIST = "select * from board order by seq desc";
 				
 // CURD 기능의 메소드 구현
 // 글 등록

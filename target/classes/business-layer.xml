@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 
-	<bean id="boardDAO" class="com.min.biz.board.impl.BoardDAO"></bean>
-	<bean id="boardService" class="com.min.biz.board.impl.BoardServiceImpl">
+	<!-- 	<bean id="boardDAO" class="com.min.biz.board.impl.BoardDAO"></bean>
+	<bean id="boardService" class="com.min.biz.board.impl.BoardServiceImpl"></bean> -->
+		<!-- 생성자 injection는 constructor-arg 태그를 사용
 		<constructor-arg ref="boardDAO"/>
-	</bean>
+		 -->
+		 
+		 <!-- setter injections는 property 태그를 사용  name에는 BoardServiceImpl에서 가지고 있는 객체의 이름을 name으로 들어간다.
+		 setboardDAO를 호출 의미, ref="boardDAO"는 id가 boardDAO라는것을 의미한다.-->
+		<!--  <property name="boardDAO" ref="boardDAO"></property> -->
+		
+		<!--  Annotation 기반의 IoC설정 : Namespaces 에 context 추가-->
+		<!-- base-package 밑에있는 모든 클래스를 등록, BoardServiceImpl에 @Component 어노테이션 추가 , @Autowird를 통해 BoardDAO의 typeInject 설정-->
+		<context:component-scan base-package="com.min.biz"/>
+		
+	
 
 </beans>

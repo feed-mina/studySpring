@@ -1,5 +1,7 @@
 package com.min.biz.board;
 
+import java.util.List;
+
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class BoardServiceClient {
@@ -21,6 +23,10 @@ public class BoardServiceClient {
 		vo.setContent("임시 내용............");
 		boardService.insertBoard(vo);
 		
+		List<BoardVO> boardList = boardService.getBoardList(vo);
+		for (BoardVO board : boardList) {
+			System.out.println("--->" + board.toString());
+		}
 		
 		// 4. 스프링 컨테이너를 종료한다.
 		container.close();

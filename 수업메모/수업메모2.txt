@@ -65,3 +65,9 @@ CREATE TABLE BOARD(
 );
 
 ** H2에서 SYSDATE 오류 > current_date 로 해결 ! **
+
+
+
+
+Exception in thread "main" org.springframework.beans.factory.parsing.BeanDefinitionParsingException: Configuration problem: Cannot locate BeanDefinitionDecorator for element [component-scan]
+Offending resource: class path resource [business-layer.xml]
