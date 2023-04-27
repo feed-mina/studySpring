@@ -2,8 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 
 
 	<!-- 	<bean id="boardDAO" class="com.min.biz.board.impl.BoardDAO"></bean>
@@ -20,6 +22,27 @@
 		<!-- base-package 밑에있는 모든 클래스를 등록, BoardServiceImpl에 @Component 어노테이션 추가 , @Autowird를 통해 BoardDAO의 typeInject 설정-->
 		<context:component-scan base-package="com.min.biz"/>
 		
-	
+		<!-- 횡단 관심에 해당하는 Advice 클래스를 등록한다. -->
+		<bean id="log" class="com.min.biz.common.LogAdvice"/>
+
+		<!--  AOP 설정 -->
+		<aop:config>
+		<!-- pointcut id와 aop:before 에서 point-ref은 같은 값이여야 한다. 
+		 execution(리턴타입,패키지경로, 클래스명, 매소드명 및 매개변수 -->
+		<!--  return type : *, void, !void  -->
+		
+		<!-- 패키지경로 : 정확한 이름의 패키지 아래, 시작패키지 이름 명시, 시작과 끝의 패지키 이름 명시 : 패키지 이름에 대문자를 사용할 수 있으나 관례상 X -->
+		<!-- 		<aop:pointcut id="allPointcut" expression="execution(* com.min.biz.user.Impl.*Impl.*(..))"/> -->
+		
+		
+		<!-- <aop:pointcut id="allPointcut" expression="execution(!void com.min.biz..UserServiceImpl.*(..))"/> -->
+		<!-- <aop:pointcut id="allPointcut" expression="execution(!void com.min.biz..*Impl.get*(..))"/> -->
+		<aop:pointcut id="allPointcut" expression="execution(!void com.min.biz..*Impl.*(..))"/>
+		<aop:pointcut id="getPointcut" expression="execution(!void com.min.biz..*Impl.get*(..))"/>
+			<aop:aspect ref="log">
+				<!-- <aop:after pointcut-ref="allPointcut" method="printLog"/> -->
+				<aop:before pointcut-ref="allPointcut" method="printLog"/>
+			</aop:aspect>
+		</aop:config>
 
 </beans>

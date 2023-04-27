@@ -1,0 +1,20 @@
+-- aspectj 라이브러리 Mvnrepository 사이트에서 찾아서 pom.xml 에 dependency 추가
+
+Exception in thread "main" java.lang.NoClassDefFoundError: org/aspectj/weaver/tools/PointcutDesignatorHandler
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3166)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2309)
+	at org.springframework.core.type.StandardAnnotationMetadata.hasAnnotatedMethods(StandardAnnotationMetadata.java:159)
+	at org.springframework.context.annotation.ConfigurationClassUtils.isLiteConfigurationCandidate(ConfigurationClassUtils.java:106)
+	at org.springframework.context.annotation.ConfigurationClassUtils.checkConfigurationClassCandidate(ConfigurationClassUtils.java:87)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:233)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:203)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:617)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:446)
+	at org.springframework.context.support.GenericXmlApplicationContext.<init>(GenericXmlApplicationContext.java:71)
+	at com.min.biz.board.BoardServiceClient.main(BoardServiceClient.java:12)
+Caused by: java.lang.ClassNotFoundException: org.aspectj.weaver.tools.PointcutDesignatorHandler
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	... 12 more

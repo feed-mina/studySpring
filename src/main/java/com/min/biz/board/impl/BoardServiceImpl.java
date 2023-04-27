@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.min.biz.board.BoardService;
 import com.min.biz.board.BoardVO;
+import com.min.biz.common.LogAdvice;
 
 
 // 4. Service 구현 클래스 : 서비스인터페이스를 implements 한 ServiceImpl 클래스를 작성
@@ -21,6 +22,10 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired // Type Injection
 	private BoardDAO boardDAO;
 
+//		private LogAdvice log;
+	
+//	public BoardServiceImpl() { log = new LogAdvice();}
+	
 	
 	// public BoardServiceImpl() {}
 		
@@ -41,27 +46,37 @@ public class BoardServiceImpl implements BoardService {
 	// implements 를 했기 때문에 BoardeService까지 오버라이드가 되어있다.
 	@Override
 	public void insertBoard(BoardVO vo) {
+	//	LogAdvice log = new LogAdvice();
+	//			log.printLog();
 		boardDAO.insertBoard(vo);
 	}
 
 	@Override
 	public void updateBoard(BoardVO vo) {
+	//	LogAdvice log = new LogAdvice();
+	//		log.printLog();
 		boardDAO.updateBoard(vo);
 
 	}
 
 	@Override
 	public void deleteBoard(BoardVO vo) {
+	//	LogAdvice log = new LogAdvice();
+	//		log.printLog();
 		boardDAO.deleteBoard(vo);
 	}
 
 	@Override
 	public BoardVO getBoard(BoardVO vo) {
+	//	LogAdvice log = new LogAdvice();
+	//			log.printLog();
 		return boardDAO.getBoard(vo);
 	}
 
 	@Override
 	public List<BoardVO> getBoardList(BoardVO vo) {
+	//	LogAdvice log = new LogAdvice();
+	//			log.printLog();
 		return boardDAO.getBoardList(vo);
 	}
 
