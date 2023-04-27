@@ -59,6 +59,9 @@
 				<aop:after-throwing pointcut-ref="allPointcut" method="exceptionLog" throwing="exceptionObj"/>
 			</aop:aspect>
 
+			<aop:aspect ref="around">
+				<aop:around pointcut-ref="allPointcut" method="aroundLog"/> 
+			</aop:aspect>
 		</aop:config>
 
 </beans>
