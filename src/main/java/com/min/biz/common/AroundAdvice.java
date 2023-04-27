@@ -11,7 +11,12 @@ import org.springframework.util.StopWatch;
 public class AroundAdvice {
 
 	public Object aroundLog(ProceedingJoinPoint jp) throws Throwable{
-		String method = jp.getSignature().getName(); // 비즈니스 메소드 이름을 알 수 있다.
+		
+		// ProceedingJoinPoint 포인트는 around 메서드만 가질 수 있다. 나머지는 JoinPoint를 받아야만 한다.
+		
+		// String method = jp.getSignature().getName(); // 비즈니스 메소드 이름을 알 수 있다.
+		// String method = jp.getSignature().toLongString();
+		String method = jp.getSignature().toShortString();
 		
 		Object obj = null;
 		System.out.println("----[Before Logic]---"); 

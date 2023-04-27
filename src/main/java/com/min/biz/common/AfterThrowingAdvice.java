@@ -2,10 +2,16 @@ package com.min.biz.common;
 
 import java.sql.SQLException;
 
+import org.aspectj.lang.JoinPoint;
+
+
 public class AfterThrowingAdvice {
 
-	public void exceptionLog(Exception exceptionObj) {
-		System.out.println("[예외 처리] 비즈니스 로직 수행 중 예외 발생"); 
+	public void exceptionLog(JoinPoint jp , Exception exceptionObj) {
+		
+		String method = jp.getSignature().getName();
+		
+		System.out.println("[예외 처리] " + method +"() 메소드 수행 중 예외 발생"); 
 	//	System.out.println("[예외 처리] 비즈니스 메소드 리턴 값 : " + exceptionObj.toString()); 
 		
 		// 발생된 예외의 타입에 따른 분기처리

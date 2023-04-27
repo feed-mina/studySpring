@@ -57,3 +57,13 @@ INFO : org.springframework.beans.factory.support.DefaultListableBeanFactory - De
 ----------------------------------------------------------------
 
 
+JoinPoint 와 바인드 변수
+
+바인드 데이터 메소드는 Object type으로 지정해야 한다. 
+after returning은 return Obj로 바인드 변수를 받고, after-throwing은 Exception (최상위 예외처리 클래스)를 바인드 변수로 받는다.
+스프링컨테이너가 around Advice를 실행할때 JoinPoint와 Proceeding JoinPoint가 인터페이스이기 때문에 Proceeding JoinPoint 인터페이스는 jp 변수명에 implements 한 객체를 할당한다.
+이때 JoinPoint 에서 상속받은 매서드를 jp객체를 이용해 사용할 수 있다.
+
+getSignature(), getTarget(), getArgs() 매소드 가 여기에 해당한다.
+
+
