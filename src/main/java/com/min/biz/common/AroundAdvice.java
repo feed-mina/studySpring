@@ -11,6 +11,8 @@ import org.springframework.util.StopWatch;
 public class AroundAdvice {
 
 	public Object aroundLog(ProceedingJoinPoint jp) throws Throwable{
+		String method = jp.getSignature().getName(); // 비즈니스 메소드 이름을 알 수 있다.
+		
 		Object obj = null;
 		System.out.println("----[Before Logic]---"); 
 
@@ -22,7 +24,7 @@ public class AroundAdvice {
 		obj = jp.proceed();
 		
 		watch.stop();
-		System.out.println("비즈니스 메소드 수행에 소요된 시간 :" + watch.getTotalTimeSeconds()); 
+		System.out.println( method + "() 메소드 수행에 소요된 시간 :" + watch.getTotalTimeSeconds()); 
 		return obj;
 	}
 
