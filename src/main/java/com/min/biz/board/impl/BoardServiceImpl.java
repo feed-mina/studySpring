@@ -48,6 +48,11 @@ public class BoardServiceImpl implements BoardService {
 	public void insertBoard(BoardVO vo) {
 	//	LogAdvice log = new LogAdvice();
 	//			log.printLog();
+		
+	// exceptionObj , AfterThrowingAdvice 오류 테스트
+		if(vo.getSeq() == 0) {
+			throw new IllegalArgumentException("0번 글은 등록 할 수 없습니다.");
+		}
 		boardDAO.insertBoard(vo);
 	}
 
