@@ -19,8 +19,8 @@ public class UserServiceClient {
 		 
 		// 3. Lookup 한 객체를 테스트한다.
 		UserVO vo = new UserVO();
-		vo.setId("aaa");
-		vo.setPassword("aaa");
+		vo.setId("test");
+		vo.setPassword("test");
 		
 		UserVO user = userService.getUser(vo);
 		if(user != null) {

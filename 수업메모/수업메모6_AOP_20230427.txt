@@ -39,3 +39,21 @@ business-layer 에서 aop에 적힌 method를 어드바이스라고 한다.
 어드바이스는 트렌젝션 설정할때 필요하다.
 
 
+**비즈니스 메소드 기점으로 aop aspect의 설정이 달라진다.
+After-Returning : 비즈니스 메소드가 성공적으로 리턴되면 동작
+After : 비즈니스 메소드가 실행된 후 , 무조건 실행 try-catch-finally 블록에서 해당
+After 에서는 returning 속성 값이 없지만 After-Returning은 returning="리턴값" 을 받을 수 있다. 
+
+[사전 처리] 비즈니스 로직 수행 전 동작
+[사전 처리] 비즈니스 로직 수행 전 동작
+==> JDBC로 getUser() 기능처리
+[사후 처리] 비즈니스 로직 수행 후 동작
+[사후 처리] 비즈니스 메소드 리턴 값 : UserVO [id=aaa, password=aaa, name=게스트, role=USER]
+게스트님 환영합니다. ^^
+INFO : org.springframework.context.support.GenericXmlApplicationContext - Closing org.springframework.context.support.GenericXmlApplicationContext@38364841: startup date [Thu Apr 27 18:32:22 KST 2023]; root of context hierarchy
+INFO : org.springframework.beans.factory.support.DefaultListableBeanFactory - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@54a7079e: defining beans [boardDAO,boardService,userDAO,userService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,log,afterReturning,org.springframework.aop.config.internalAutoProxyCreator,allPointcut,getPointcut,org.springframework.aop.aspectj.AspectJPointcutAdvisor#0,org.springframework.aop.aspectj.AspectJPointcutAdvisor#1,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+
+
+----------------------------------------------------------------
+
+

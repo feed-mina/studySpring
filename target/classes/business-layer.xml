@@ -24,6 +24,7 @@
 		
 		<!-- 횡단 관심에 해당하는 Advice 클래스를 등록한다. -->
 		<bean id="log" class="com.min.biz.common.LogAdvice"/>
+		<bean id="afterReturning" class="com.min.biz.common.AfterReturningAdvice"/>
 
 		<!--  AOP 설정 -->
 		<aop:config>
@@ -42,6 +43,15 @@
 			<aop:aspect ref="log">
 				<!-- <aop:after pointcut-ref="allPointcut" method="printLog"/> -->
 				<aop:before pointcut-ref="allPointcut" method="printLog"/>
+			</aop:aspect>
+			
+			<!-- 
+			<aop:aspect ref="afterReturning">
+				<aop:after-returning pointcut-ref="getPointcut" method="afterLog"/>
+			</aop:aspect>
+			 -->
+			<aop:aspect ref="afterReturning">
+				<aop:after-returning pointcut-ref="getPointcut" method="afterLog" returning="returnObj"/>
 			</aop:aspect>
 		</aop:config>
 
