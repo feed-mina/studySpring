@@ -1,0 +1,19 @@
+CREATE TABLE USERS(
+	ID VARCHAR2(8) PRIMARY KEY,
+	PASSWORD VARCHAR2(8),
+	NAME VARCHAR2(20),
+	ROLE VARCHAR2(5)
+);
+
+INSERT INTO USERS VALUES('aaa','aaa','게스트','USER');
+INSERT INTO USERS VALUES('test','test','관리자','ADMIN');
+ 
+INFO : org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [business-layer.xml]
+INFO : org.springframework.context.annotation.ClassPathBeanDefinitionScanner - JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+INFO : org.springframework.context.support.GenericXmlApplicationContext - Refreshing org.springframework.context.support.GenericXmlApplicationContext@49070868: startup date [Thu Apr 27 12:41:46 KST 2023]; root of context hierarchy
+INFO : org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+INFO : org.springframework.beans.factory.support.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@16610890: defining beans [boardDAO,boardService,userDAO,userService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+==> JDBC로 getUser() 기능처리
+게스트님 환영합니다. ^^
+INFO : org.springframework.context.support.GenericXmlApplicationContext - Closing org.springframework.context.support.GenericXmlApplicationContext@49070868: startup date [Thu Apr 27 12:41:46 KST 2023]; root of context hierarchy
+INFO : org.springframework.beans.factory.support.DefaultListableBeanFactory - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@16610890: defining beans [boardDAO,boardService,userDAO,userService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
