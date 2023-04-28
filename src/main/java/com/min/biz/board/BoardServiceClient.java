@@ -18,7 +18,7 @@ public class BoardServiceClient {
 		}
 		// 3. Lookup 한 객체를 테스트한다.
 		BoardVO vo = new BoardVO();
-		vo.setSeq(0);
+		// vo.setSeq(0);
 		vo.setTitle("임시 제목");
 		vo.setWriter("테스터");
 		vo.setContent("임시 내용............");

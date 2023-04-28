@@ -20,7 +20,7 @@ import com.min.biz.common.LogAdvice;
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired // Type Injection
-	private BoardDAO boardDAO;
+	private BoardDAOSpring boardDAO;
 
 //		private LogAdvice log;
 	
