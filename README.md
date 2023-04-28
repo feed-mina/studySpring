@@ -1,5 +1,6 @@
 # studySpring
 
+## 스프링 퀵 스타트 교제와 인강을 보고 공부한 내용을 기록합니다.
 
 Spring JDBC 와 Commons DBCP dependency를 pom.xml에 추가 [20230428]
 
