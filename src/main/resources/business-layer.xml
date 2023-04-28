@@ -35,8 +35,11 @@
 		</bean>
 		
 		<!-- Jdbc템플릿 등록 -->
-		<bean class="org.springframework.jdbc.core.JdbcTemplate"></bean>
+		<bean class="org.springframework.jdbc.core.JdbcTemplate">
+			<property name="dataSource" ref="dataSource"></property>
+		</bean>
 		
+		<!-- name은 setter매서드, ref는 인자로 전달한 id를 의미 -->
 		<!-- base-package 밑에있는 모든 클래스를 등록, BoardServiceImpl에 @Component 어노테이션 추가 , @Autowird를 통해 BoardDAO의 typeInject 설정-->
 		<!-- 횡단 관심에 해당하는 Advice 클래스를 등록한다. 
 		<bean id="log" class="com.min.biz.common.LogAdvice"/>
