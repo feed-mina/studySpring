@@ -30,9 +30,9 @@ public class BoardDAO {
 	// SQL 명령어들
 		private final String BOARD_INSERT = "insert into board(seq, title, writer, content) values((select nvl(max(seq), 0)+1 from board),?,?,?)"; 
 				// 1씩 증가시켜서 일련번호를 증가시킨다.
-		private final String BOARD_UPDATE = "update board set title=?, content=?, where weq=?";
+		private final String BOARD_UPDATE = "update board set title=?, content=?, where seq=?";
 		private final String BOARD_DELETE = "delete board where seq=?";
-		private final String BOARD_GET = "select * from board where weq=?";
+		private final String BOARD_GET = "select * from board where seq=?";
 		private final String BOARD_LIST = "select * from board order by seq desc";
 				
 // CURD 기능의 메소드 구현
