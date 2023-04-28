@@ -19,26 +19,20 @@
 		<!--  <property name="boardDAO" ref="boardDAO"></property> -->
 		
 		<!--  Annotation 기반의 IoC설정 : Namespaces 에 context 추가-->
-		<!-- base-package 밑에있는 모든 클래스를 등록, BoardServiceImpl에 @Component 어노테이션 추가 , @Autowird를 통해 BoardDAO의 typeInject 설정-->
 		<context:component-scan base-package="com.min.biz"/>
 		
-		<!-- 횡단 관심에 해당하는 Advice 클래스를 등록한다. -->
+		<!-- Annotation 기반의 AOP 설정 : AOP에 관련된 어노테이션 설정을 사용할 수 있게 한다.-->
+		<aop:aspectj-autoproxy/>
+		
+		<!-- base-package 밑에있는 모든 클래스를 등록, BoardServiceImpl에 @Component 어노테이션 추가 , @Autowird를 통해 BoardDAO의 typeInject 설정-->
+		<!-- 횡단 관심에 해당하는 Advice 클래스를 등록한다. 
 		<bean id="log" class="com.min.biz.common.LogAdvice"/>
 		<bean id="afterReturning" class="com.min.biz.common.AfterReturningAdvice"/>
 		<bean id="afterThrowing" class="com.min.biz.common.AfterThrowingAdvice"/>
-
-		<!--  AOP 설정 -->
+		-->
+		<!--  AOP 설정
 		<aop:config>
-		<!-- pointcut id와 aop:before 에서 point-ref은 같은 값이여야 한다. 
-		 execution(리턴타입,패키지경로, 클래스명, 매소드명 및 매개변수 -->
-		<!--  return type : *, void, !void  -->
-		
-		<!-- 패키지경로 : 정확한 이름의 패키지 아래, 시작패키지 이름 명시, 시작과 끝의 패지키 이름 명시 : 패키지 이름에 대문자를 사용할 수 있으나 관례상 X -->
-		<!-- 		<aop:pointcut id="allPointcut" expression="execution(* com.min.biz.user.Impl.*Impl.*(..))"/> -->
-		
-		
-		<!-- <aop:pointcut id="allPointcut" expression="execution(!void com.min.biz..UserServiceImpl.*(..))"/> -->
-		<!-- <aop:pointcut id="allPointcut" expression="execution(!void com.min.biz..*Impl.get*(..))"/> -->
+	
 		<aop:pointcut id="allPointcut" expression="execution(* com.min.biz..*Impl.*(..))"/>
 		<aop:pointcut id="getPointcut" expression="execution(* com.min.biz..*Impl.get*(..))"/>
 		
@@ -46,11 +40,6 @@
 				<aop:before pointcut-ref="allPointcut" method="printLog"/>
 			</aop:aspect>
 			
-			<!-- 
-			<aop:aspect ref="afterReturning">
-				<aop:after-returning pointcut-ref="getPointcut" method="afterLog"/>
-			</aop:aspect>
-			 -->
 			<aop:aspect ref="afterReturning">
 				<aop:after-returning pointcut-ref="getPointcut" method="afterLog" returning="returnObj"/>
 			</aop:aspect>
@@ -63,5 +52,23 @@
 				<aop:around pointcut-ref="allPointcut" method="aroundLog"/> 
 			</aop:aspect>
 		</aop:config>
+ 	-->
+
+
+	<!-- 
+			<aop:aspect ref="afterReturning">
+				<aop:after-returning pointcut-ref="getPointcut" method="afterLog"/>
+			</aop:aspect>
+			 -->
+	<!-- pointcut id와 aop:before 에서 point-ref은 같은 값이여야 한다. 
+		 execution(리턴타입,패키지경로, 클래스명, 매소드명 및 매개변수 -->
+		<!--  return type : *, void, !void  -->
+		
+		<!-- 패키지경로 : 정확한 이름의 패키지 아래, 시작패키지 이름 명시, 시작과 끝의 패지키 이름 명시 : 패키지 이름에 대문자를 사용할 수 있으나 관례상 X -->
+		<!-- 		<aop:pointcut id="allPointcut" expression="execution(* com.min.biz.user.Impl.*Impl.*(..))"/> -->
+		
+		
+		<!-- <aop:pointcut id="allPointcut" expression="execution(!void com.min.biz..UserServiceImpl.*(..))"/> -->
+		<!-- <aop:pointcut id="allPointcut" expression="execution(!void com.min.biz..*Impl.get*(..))"/> -->
 
 </beans>

@@ -3,10 +3,21 @@ package com.min.biz.common;
 import java.sql.SQLException;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.stereotype.Service;
 
+@Service
+@Aspect
 
 public class AfterThrowingAdvice {
 
+//	@Pointcut("execution(* com.min.biz..*Impl.*(..))") // 포인트컷 매소드를 생성
+//	public void allPointcut() {}	
+//	
+//	// 바인딩 변수를 반드시 맵핑해야한다 ! 
+//	
+	@AfterThrowing(pointcut = "PointcutCommon.allPointcut()", throwing = "exceptionObj")
 	public void exceptionLog(JoinPoint jp , Exception exceptionObj) {
 		
 		String method = jp.getSignature().getName();

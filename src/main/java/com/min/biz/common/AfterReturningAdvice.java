@@ -1,12 +1,23 @@
 package com.min.biz.common;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.stereotype.Service;
 
 import com.min.biz.user.UserVO;
-
+@Service
+@Aspect
 public class AfterReturningAdvice {
 
+//	@Pointcut("execution(* com.min.biz..*Impl.*(..))") // 포인트컷 매소드를 생성
+//	public void getPointcut() {}	
+//	
+//	// 바인딩 변수를 반드시 맵핑해야한다 ! 
+//	
+	@AfterReturning(pointcut = "PointcutCommon.getPointcut()", returning = "returnObj")
 	public void afterLog(JoinPoint jp ,Object returnObj) {
+		
 		// 다른 매개변수와 같이 사용할때 JoinPoint 는 꼭 첫번째 매개변수여야만 한다. 
 		String method = jp.getSignature().getName();
 		

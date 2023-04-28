@@ -67,3 +67,9 @@ after returning은 return Obj로 바인드 변수를 받고, after-throwing은 E
 getSignature(), getTarget(), getArgs() 매소드 가 여기에 해당한다.
 
 
+=============================================================
+
+어노테이션 방식의 AOP
+
+기능 하나당 어드바이스 하나를 만드는것을 추천한다. 
+

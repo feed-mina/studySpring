@@ -46,13 +46,10 @@ public class BoardServiceImpl implements BoardService {
 	// implements 를 했기 때문에 BoardeService까지 오버라이드가 되어있다.
 	@Override
 	public void insertBoard(BoardVO vo) {
-	//	LogAdvice log = new LogAdvice();
-	//			log.printLog();
-		
-	// exceptionObj , AfterThrowingAdvice 오류 테스트
-		// 	if(vo.getSeq() == 0) {
-		// 	throw new IllegalArgumentException("0번 글은 등록 할 수 없습니다.");
-		// }
+		// LogAdvice log = new LogAdvice();
+		//		log.printLog();
+		// -- exceptionObj , AfterThrowingAdvice 오류 테스트
+		// 	if(vo.getSeq() == 0) { throw new IllegalArgumentException("0번 글은 등록 할 수 없습니다."); }
 		boardDAO.insertBoard(vo);
 	}
 

@@ -14,7 +14,9 @@ https://mvnrepository.com/artifact/org.springframework/spring-webmvc
 -- beans의 bean 태그
 https://www.springframework.org/schema/beans/spring-beans.xsd
 
-
+-- 단축키
+ctrl + shift + o 를 같이 누르면 import 부분을 정리한다.
+패키지 명을 누르고 > ctrl + shift + o 를 같이 누르면 import 부분을 정리한다.
 
 
 
