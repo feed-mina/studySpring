@@ -9,17 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-// import org.springframework.web.servlet.HandlerMapping;
-
 import com.min.biz.board.BoardVO;
 import com.min.biz.board.impl.BoardDAO;
 import com.min.biz.user.UserVO;
 import com.min.biz.user.impl.UserDAO;
  
-public class DispatcherServlet extends HttpServlet {
+public class DispatcherServletBackup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      
-    public DispatcherServlet() {
+    public DispatcherServletBackup() {
     	System.out.println("===> DispatcherServlet 생성");
     }
  
@@ -36,19 +34,26 @@ public class DispatcherServlet extends HttpServlet {
     	
     	
     	// 2. 추출된 path 에 따라  요청을 분기처리한다.
-    	// 주어진 라이브러리를 쓰지 않고 HandlerMapping를 클래스로, Controller를 인터페이스로  직접 만드는 중
-    	HandlerMapping mapper = new HandlerMapping();
-    	Controller ctrl = mapper.getController(path);
+    	if(path.equals("/login.do")) { 
+    		
+    	} else if(path.equals("/logout.do")) {
+    		
+    	} else if(path.equals("/insertBoard.do")) { 
+    		
+    	} else if(path.equals("/updateBoard.do")) {
+
+    	} else if(path.equals("/deleteBoard.do")) {
+
+    	} else if(path.equals("/getBoard.do")) { 
+    		
+    	} else if(path.equals("/getBoardList.do")) {
+
+    	}  else {
+    		System.out.println("URL 요청을 다시 확인해주세요.");
+    	}
     	
-    	
-    	// 3. 검색한 Controller를 실행한다.
-    	String viewPage = ctrl.handleRequest(request, response);
-    	
-    	
-    	
-    	/// 4. Controller가 리턴한 화면으로 이동한다.
-    	response.sendRedirect(viewPage);
 	}
 }
 
-
+// 반드시 서버를 끄고 다시 실행해야 한다. ->  톰켓서버를 다시 실행해야 web.xml의 서블릿 컨테이너를 다시 실행 할 수 있기 때문이다.
+//
