@@ -10,8 +10,8 @@
 <body>
 	<center>
 	<h1>글등록</h1>
-	<a href="logout.do">Log-out</a>
-		<form action="insertBoard.do" method="post">
+	<a href="logout_proc.jsp">Log-out</a>
+		<form action="insertBoard_proc.jsp" method="post">
 		<table border="1" cellpadding="0" cellspacing="0" >
 			<tr>
 				<td bgcolor="orange" width="70">제목</td>
