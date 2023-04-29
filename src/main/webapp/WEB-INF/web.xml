@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
-
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <servlet>
+      <servlet-name>action</servlet-name>
+  	  <servlet-class>com.min.controller.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
 </web-app>
+
+<!-- 브라우저로부터 파일이름 이 * 확장자가 do -> 모든 .do 에서 action이라는 부분의 servlet-class를 실행한다.
+web.xml 파일을 로딩하는건 톰켓 서버 안에 들어있는 서블릿 컨테이너가 로딩을 한다. 
+따라서 서블릿 컨테이너는 web.xml에 등록된 클래스를 등록하고 관리한다. -->
