@@ -1,6 +1,5 @@
 package com.min.biz.tv;
 
-import java.util.List;
 import java.util.Properties;
 
 public class CollectionBean {

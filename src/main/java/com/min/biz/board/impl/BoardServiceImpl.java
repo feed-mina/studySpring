@@ -3,12 +3,10 @@ package com.min.biz.board.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.min.biz.board.BoardService;
 import com.min.biz.board.BoardVO;
-import com.min.biz.common.LogAdvice;
 
 
 // 4. Service 구현 클래스 : 서비스인터페이스를 implements 한 ServiceImpl 클래스를 작성
@@ -20,7 +18,9 @@ import com.min.biz.common.LogAdvice;
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired // Type Injection
-	private BoardDAOSpring boardDAO;
+	private BoardDAO boardDAO;
+
+	//private BoardDAOSpring boardDAO;
 
 //		private LogAdvice log;
 	

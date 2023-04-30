@@ -1,11 +1,6 @@
 package com.min.biz.user;
 
-import java.util.List;
-
 import org.springframework.context.support.GenericXmlApplicationContext;
-
-import com.min.biz.board.BoardService;
-import com.min.biz.board.BoardVO;
 
 public class UserServiceClient {
 

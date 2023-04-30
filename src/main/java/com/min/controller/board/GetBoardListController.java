@@ -6,19 +6,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.min.biz.board.BoardVO;
 import com.min.biz.board.impl.BoardDAO;
-import com.min.controller.Controller;
 
 public class GetBoardListController implements Controller {
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 
 		System.out.println("글 목록 검색처리");	
 		
-		// 1. DB 연동 처리 jdbc 기반의 dao 사용
-
+		// 1. DB 연동 처리 
 		String seq = request.getParameter("seq");
 
 		
@@ -30,9 +31,10 @@ public class GetBoardListController implements Controller {
 		HttpSession session = request.getSession();
 		session.setAttribute("boardList", boardList);
 		
-		// 3. 화면 네비게이션
-		
-		return "getBoardList.jsp";
+		// 3. 화면 네비게이션(이동할 화면 정보를 ModelAndView 객체에 등록하여 리턴한다.)	
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("getBoardList");
+		return mav;
 	}
 
 }

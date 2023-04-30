@@ -1,18 +1,11 @@
 package com.min.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.min.biz.board.BoardVO;
-import com.min.biz.board.impl.BoardDAO;
-import com.min.biz.user.UserVO;
-import com.min.biz.user.impl.UserDAO;
  
 public class DispatcherServletBackup extends HttpServlet {
 	private static final long serialVersionUID = 1L;

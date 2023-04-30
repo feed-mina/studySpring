@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.min</groupId>
 	<artifactId>biz</artifactId>
-	<name>SpringProject_Model1</name>
+	<name>SpringProject_MVC</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -39,12 +39,6 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>	
-	<dependency>
-		    <groupId>org.aspectj</groupId>
-		    <artifactId>aspectjweaver</artifactId>
-		    <version>1.8.8</version>
-		    <scope>runtime</scope>
-		</dependency>
 		
 		<!-- Logging -->
 		<dependency>
@@ -121,31 +115,18 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>  
-		
+		</dependency>        
 		
 		<!-- H2 데이터베이스 드라이버 -->
 		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
 		<dependency>
 		    <groupId>com.h2database</groupId>
 		    <artifactId>h2</artifactId>
-		    <version>2.0.202</version>
+		    <version>2.1.214</version>
+		  <!--   <scope>test</scope> -->
+		  <!--  scope 태그가 있어서 h2 인식이 자꾸 안되었던것.  -->
 		</dependency>
-		
-		<!-- Spring JDBC -->
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-jdbc</artifactId>
-		    <version>${org.springframework-version}</version>
-		</dependency>
-		
-		<!-- Commons DBCP --> 
-		<dependency>
-		    <groupId>commons-dbcp</groupId>
-		    <artifactId>commons-dbcp</artifactId>
-		    <version>1.4</version>
-		</dependency>
-		      
+	 
 	</dependencies>
     <build>
         <plugins>

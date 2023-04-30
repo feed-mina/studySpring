@@ -3,14 +3,16 @@ package com.min.controller.board;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.min.biz.board.BoardVO;
 import com.min.biz.board.impl.BoardDAO;
-import com.min.controller.Controller;
 
 public class UpdateBoardController implements Controller {
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 
 		System.out.println("글수정");	
 		
@@ -31,8 +33,10 @@ public class UpdateBoardController implements Controller {
 		
 		boardDAO.updateBoard(vo);
 		
-		// 3. 화면 네비게이션
-		return "getBoardList.do";
+		// 3. 화면 네비게이션 (이동할 화면 정보를 ModelAndView 객체에 등록하여 리턴한다.)	
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("forward:getBoardList.do");
+		return mav; 
 	}
 
 }

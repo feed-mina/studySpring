@@ -1,8 +1,6 @@
 package com.min.biz.tv;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 // 마치 xml에서 <bean class="com.min.biz.tv.LGTV#0"/> 를 사용한것과 @Component 사용이 같은 역할을 한다.
 // 클래스 이름이 변경할때 컴포넌트만 인식하면 되기 때문에 xml을 따로 수정하지 않아도 되는 편리함이 있다.

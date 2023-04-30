@@ -1,7 +1,5 @@
 package com.min.biz.tv;
 
-import org.springframework.stereotype.Component;
-
 // @Component 
 public class AppleSpeaker implements Speaker {
 	
