@@ -24,9 +24,16 @@ public class BoardDAO {
 		private Connection conn = null;
 		private PreparedStatement stmt = null;
 		private ResultSet rs = null;
-	
-	
-	// SQL 명령어들
+		// private String title;
+		
+//	 
+//		public void setTitle(String title) {
+//			System.out.println("BoardDAO() : "+title);
+//			this.title = title;
+//		}
+
+	 
+		// SQL 명령어들
 		private final String BOARD_INSERT = "insert into board(seq, title, writer, content) values((select nvl(max(seq), 0)+1 from board),?,?,?)"; 
 				// 1씩 증가시켜서 일련번호를 증가시킨다.
 		private final String BOARD_UPDATE = "update board set title=?, content=? where seq=?";

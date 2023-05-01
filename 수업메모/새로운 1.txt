@@ -1,0 +1,22 @@
+DispatcherServlet  : 모든 클라이언트의 요청을 가장 먼저 처리하는 Front Controller의 역할을 하며 유일한 서블릿 클래스이다.
+HandlerMapping : 클라이언트의 요청을 처리한 Controller
+Controller : 각각의 컨트롤러는 실질적인 클라이언트의 요청을 처리한다.
+ViewResolver : 
+
+예시 : 글 목록 화면 
+브라우저를 열어서 글 목록을 보고싶어 getboardList.do 로 요청하면 모든 *.do부분을 DispatcherServlet에서 받는다. 
+DispatcherServlet은 HandlerMapping에게 내가 getboardList.do 부분을 받았는데 무슨 컨트롤러를 실행하면 좋을까 하고 물어본다. 
+HandlerMapping은 getboardList controller를 실행하라고 리턴한다. 
+DispatcherServlet은 메모리에 떠있는 HashMap 객체에 수많은 컨트롤러 중에서 
+getboardList Controller를 띄울 수 있다. 
+getboardList Controller는 DAO 에서 글 목록을 받아내고 
+이렇게 받아낸 글 목록을 session (setAttribute)로 보낸다. 
+그리고 나서 어느 페이지로 움직일지 문자열 - getboardList.jsp 라는 문자열을 DispatcherServlet으로 전달한다. 
+DispatcherServlet은 getboardList.jsp 로 send Redirect한다.  
+(getboardList Controller가 getboardList.jsp 를 문자열로 전달했기때문) 
+이렇게 getboardList.jsp 는 글 목록 화면을 보일 수 있다. 
+
+결론 : 브라우저는 getboardList.do를 요청했으나 실제 응답은 getboardList.jsp로 디스플레이된다.
+
+
+
