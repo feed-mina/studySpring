@@ -1,4 +1,6 @@
- <%@ page language="java" contentType="text/html; charset=EUC-KR"
+ <%@page import="com.min.biz.board.BoardVO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
     
@@ -45,7 +47,11 @@
 				<th bgcolor="orange" width="150">등록일</td>
 				<th bgcolor="orange" width="100">조회수</td>					
 			</tr>
-			
+	
+	 	<%
+		List<BoardVO> list = (List) request.getAttribute("boardList");
+		%>	
+		<%= list.size() %>
 		<c:forEach var="board" items="${boardList }">
 		<tr>
 			<td>${board.seq }</td>
@@ -58,7 +64,7 @@
 		
 		</table>
 		<br>
-		<a href="insertBoard.jsp">새글등록</a>
+		<a href="insertBoard.do">새글등록</a>
 		
 	</center>
 

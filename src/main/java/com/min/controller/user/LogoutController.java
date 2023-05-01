@@ -17,7 +17,7 @@ public class LogoutController{
 
 		System.out.println("로그아웃 처리");	 
 		session.invalidate(); 
-		return "redirect:login.jsp"; 
+		return "redirect:/"; 
 	}
 
 }
