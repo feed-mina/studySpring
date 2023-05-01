@@ -26,21 +26,21 @@ public class BoardVO {
 		return title;
 	}
 	public void setTitle(String title) {
-		System.out.println("BoardVO()" + title);
+	//	System.out.println("BoardVO()" + title);
 		this.title = title;
 	}
 	public String getWriter() {
 		return writer;
 	}
 	public void setWriter(String writer) {
-		System.out.println("BoardVO()" + writer);
+	//	System.out.println("BoardVO()" + writer);
 		this.writer = writer;
 	}
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
-		System.out.println("BoardVO()" + content);
+	//	System.out.println("BoardVO()" + content);
 		this.content = content;
 	}
 	public Date getRegDate() {
@@ -59,6 +59,8 @@ public class BoardVO {
 	// Alt + shift + S : Generate to String
 	@Override
 	public String toString() {
+		// System.out.println("BoardVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
+		// 		+ regDate + ", cnt=" + cnt + "]");
 		return "BoardVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
 				+ regDate + ", cnt=" + cnt + "]";
 	}

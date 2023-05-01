@@ -19,7 +19,7 @@ public class DispatcherServlet extends HttpServlet {
 
 	 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Process(request, response);
+		process(request, response);
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
  

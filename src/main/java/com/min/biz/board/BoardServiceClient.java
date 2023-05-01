@@ -14,7 +14,7 @@ public class BoardServiceClient {
 		// 2. 테스트할 객체를 Lookup한다.
 		BoardService boardService = (BoardService) container.getBean("boardService");
 		if(boardService != null) {
-			System.out.println(boardService + "객체 검색 성공 !");
+		//	System.out.println(boardService + "객체 검색 성공 !");
 		}
 		// 3. Lookup 한 객체를 테스트한다.
 		BoardVO vo = new BoardVO();
@@ -36,7 +36,7 @@ public class BoardServiceClient {
 		
 		List<BoardVO> boardList = boardService.getBoardList(vo);
 		for (BoardVO board : boardList) {
-			System.out.println("--->" + board.toString());
+		//	System.out.println("--->" + board.toString());
 		}
 		
 		// 4. 스프링 컨테이너를 종료한다.

@@ -17,10 +17,16 @@
   	<url-pattern>*.do</url-pattern>
   </filter-mapping>
   
+  <context-param>
+  		<param-name>contextConfigLocation</param-name>
+    	<param-value>classpath:business-layer.xml</param-value>
+  </context-param>
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!-- ContextLoaderListener가 글로벌 태그로 설정한 context-param을 참조한다 -->
+  <!-- web.xml에서 filter와 lister는 프리로딩 된다. 컨테이너는 레이지로딩된다. -->
   <servlet> 
-    <servlet-name>action</servlet-name>
-    <!-- 직접 만든 DispatcherServlet에서 스프링이 제공하는 DispatcherServlet으로 변경한다. -->
-    <!--     <servlet-class>com.min.controller.DispatcherServlet</servlet-class> -->
     <servlet-name>action</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <!-- dispatcherServerlet에서 실행된 후 init매서드가 실행되면 스프링 컨테이너의 환경설정 위치를 바뀐것을 알려줌-->
