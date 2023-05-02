@@ -17,6 +17,8 @@ public class LoginController {
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
 	public String loginView(UserVO vo) {
 		System.out.println("---> 로그인 화면으로 이동");
+// Arithmetic Error 일부러 발생 
+		System.out.println(9/0);
 		vo.setId("aaa");
 		vo.setPassword("aaa");
 		return "login";
