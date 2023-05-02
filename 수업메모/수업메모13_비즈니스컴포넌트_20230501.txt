@@ -1,0 +1,44 @@
+
+비즈니스 컴포넌트 로딩
+2-LAYERED 아키텍처
+
+컨트롤러가 메모리에 뜨기전에 컨트롤러가 참조할 serviceImpl 객체가 먼저 메모리에 뜨고 컨트롤러를 메모리에 띄워야 한다.
+스프링 설정 파일
+presentation-layer.xml 은 디스패처서블릿이 읽는다. 브라우저에서 .do 를 요청하면 서블릿 컨테이너가 .do 에 해당하는 서블릿컨테이너를 해당한다. 거기에서 init매서드에 해당하는 프리젠테이션xml파일을 실행하고 이때 스프링 컨테이너가 작동한다. 이때 컴포넌트에 의해서 수 많은 컨트롤러가 메모리에 올라간다.
+ 컨트롤러가 메모리에 띄기 전에 컨트롤러가 참조할 비즈니스 매서드가 먼저 메모리에 띄게 해야 한다.
+ 
+ 서블릿보다 먼저 누군가가 business-layer.xml 을 구동해서 spring컨테이너를 실행하면 위 문제가 해결된다.
+ 서블릿보다 반드시 먼저 business-layer.xml을 로딩해서 spring컨테이너를 실행하면 비즈니스 레이어 설정에 의해서 serviceImpl객체가 메모리에 올라가고 serviceImpl객체의 dao와 어드바이스, 데이터소스가 메모리에 올라가게 된다. serviceImpl이 dao를 참조하게 된다. 
+ 
+ 컨트롤러 객체가 먼저 메모리에 올라가게 된 serviceImpl객체를 @AutoWired로 주입하게 되면 된다.
+ 이 역할을 리스너가 된다.
+ 
+ *서블릿, 필터, 리스너 
+ 브라우저가 요청했을때 서블릿이 뜨는건 바로 레이지 로딩 , 필터와 리스너는 프리로딩 방식으로 로딩된다. 프리로딩이란 클라이언트 요청없이 컨테이너가 구동될때 xml에서 메모리에 띄우게 된다. 
+ 컨트롤러 객체는 나중에 떠야 하고 serviceImpl와 dao 객체가 먼저 메모리에 떠야 한다.
+ 그래서 스프링 컨테이너가 두개가 필요하다.
+ 컨테이너는 결국 클래스다. 클래스로부터 객체 여러개를 생성하는건 아무런 문제가 없다. 각 컨테이너가 로딩하는 xml을 설정만 다르게 설정하면 된다.
+ business-layer.xml 을 로딩한 리스너 객체가 첫번째 스프링 컨테이너를 생성하고 이 스프링컨테이너가 serviceImpl, dao, datasorce, advice 를 생성 하면
+ 나중에 서블릿에 의해서 스프링컨테이너(dispatcherServlet)가 또하나 만들어질때 컨트롤러 객체가 만들어지고 컨트롤러 객체는 autowired를 하게 되면 해결 !
+정보: No Spring WebApplicationInitializer types detected on classpath
+5월 01, 2023 7:43:53 오후 org.apache.catalina.core.ApplicationContext log
+정보: Initializing Spring root WebApplicationContext
+INFO : org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+INFO : org.springframework.web.context.support.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Mon May 01 19:43:54 KST 2023]; root of context hierarchy
+INFO : org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/applicationContext.xml]
+ERROR: org.springframework.web.context.ContextLoader - Context initialization failed
+
+하나의 컨테이너에서 여러개 클래스 생성 
+
+XmlWebApplicationContext > 
+
+contextLoader lister가 default로 /WEB-INF/applicationContext.xml 을 로딩하기 때문에 applicationContext.xml의 위치와 이름을 만든 xml로  설정을 바꾸면 된다.
+context-param 설정으로 해결할 수 있다. 
+
+
+
+
+
+
+
+

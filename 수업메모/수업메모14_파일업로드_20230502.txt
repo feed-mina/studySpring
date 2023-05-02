@@ -1,0 +1,11 @@
+==== 파일업로드 권한 문제
+
+글등록처리 
+5월 02, 2023 12:59:59 오후 org.apache.catalina.core.StandardWrapperValve invoke
+심각: 경로가 [/biz]인 컨텍스트의 서블릿 [action]을(를) 위한 Servlet.service() 호출이 예외를 발생시켰습니다.
+java.nio.file.AccessDeniedException: C:\DEV\eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work\Catalina\localhost\biz\upload_95a1e8ba_eb42_4588_9820_68e4a1dcd9fc_00000003.tmp -> C:\DEVBUILDING.txt
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:89)
+	
+	--> JAVA로 파일 업로드 권한을 줘야 함
+	
+	

@@ -1,0 +1,36 @@
+
+--- 비즈니스 컴포넌트 사용
+
+DAO를 컨트롤러에서 바로 사용 할 수 없다.
+1. 사전처리, 사후처리, 예외처리 가 동작하지 않는다. 브라우저에서 서버를 요청할때 .do로 요청하는데 컨트롤러가 dao요청을 매개변수로 받아서 직접 처리하게 된다면 사전처리, 사후처리, 예외처리가 힘들다. aop를 생각했을때 pointcut은 비즈니스 매소드 , 즉 서비스Impl의 매소드가 호출될때 사전처리, 사후처리, 예외처리 어드바이스가 가능했었다.
+따라서 DAO 매서드를 직접 호출하지 않고 서비스Impl의 비즈니스 매소드를 호출하게 해야한다. 
+
+2. 유지보수 과정에서 DAO를 바꾸게 된다면 기존의 DAO에서 새로운 DAO로 바꾸게 된다면 컨트로러에 있는 DAO를 모두 바꿔야 한다. 컨트롤러가 많으면 많을 수록 DAO를 바꾸기가 어렵다. 
+
+즉, 컨트롤러에서 DAO를 매개변수로 받아서 직접 DB연동을 하면 안된다 !
+
+클라이언트가 DAO를 직접하지 않고 리모콘에 해당하는 인터페이스를 호출하면 추상매서드를 호출해서 비즈니스 매소드를 할 수 있게 한다. 그래서 @Autowired를 포함한 매소드를 실행시킬 수 있도록 한다.
+
+인터페이스를 사용한다면 advice 사용 가능하고 dao도 변경시 쉽게 할 수 있다. 
+
+boardService
+
+
+톰켓서버 시작 > contextLoaderListener 컨테이너가 pre로딩을 한다. 리스너는 business-layer.xml 설정파일을 로딩을 하고 그 이후 첫번째 Spring컨테이너를 생성한다. Component Scan 으로 ServiceImpl이 메모리에 뜨고 Autowired로 DAO를 참조한다. 브라우기 뜨기 전까지 메모리에 올라가는것 
+
+브라우저에서 .do 요청을 하면 Servlet Container를 Lazy로딩을 한다. DispathcerServlet으로 init매서드 쪽에서 presentation-layer.xml 설정파일을 로딩한다. 두번째  DispathcerServlet에서 두번째 스프링 컨테이너를 띄우게 되고 두번째 스프링 컨테이너가 Autowired로 serviceImpl을 참조하게 된다. serviceImpl이 먼저 메모리에 뜨어있기 때문에 참조가 가능하다.
+
+-- 검색기능
+검색버튼을 통해서 getboardlist.do를 할때 null체크가 되지 않는다. default는 null 
+null체크를 할 필요가 있다
+
+
+
+
+
+
+
+
+
+
+
