@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+ <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
     
   <!-- 
   JSTL(JSP Standard Tag Library)이란?
@@ -12,13 +13,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>글 목록</title>
+<title><spring:message code="message.board.list.mainTitle"/></title>
 </head>
 <body>
 	<center>
-		<h1>글 목록</h1>
+		<h1><spring:message code="message.board.list.mainTitle"/></h1>
+		<a href="getBoardList.do?lang=en"><spring:message code="message.board.language.en"/></a>&nbsp;&nbsp;&nbsp;
+		<a href="getBoardList.do?lang=ko"><spring:message code="message.board.language.ko"/></a>&nbsp;&nbsp;
+		
+		
 		<h3>
-		 	테스터님 환영합니다... <a href="logout.do">Log-out</a>
+		 	<spring:message code="message.board.list.welcomeMsg"/>... <a href="logout.do">Log-out</a>
 		</h3>
 		
 		<!--  검색시작 -->
@@ -27,11 +32,11 @@
 				<tr>
 					<td align="rignt">
 						<select name="searchCondition">
-						<option value="TITLE">제목
-						<option value="CONTENT">내용
+						<option value="TITLE"><spring:message code="message.board.list.title"/>
+						<option value="CONTENT"><spring:message code="message.board.list.content"/>
 						</select>
 					<input name="searchKeyword" type="text"/>
-					<input type="submit" value="검색" />	
+					<input type="submit" value="<spring:message code="message.board.list.btn"/>" />	
 					</td>
 				</tr>
 			</table>
@@ -41,11 +46,11 @@
 		
 		<table border="1" cellpadding="0" cellspacing="0" width="700">
 			<tr>
-				<th bgcolor="orange" width="100">번호</td>
-				<th bgcolor="orange" width="200">제목</td>
-				<th bgcolor="orange" width="150">작성자</td>
-				<th bgcolor="orange" width="150">등록일</td>
-				<th bgcolor="orange" width="100">조회수</td>					
+				<th bgcolor="orange" width="100"><spring:message code="message.board.list.seq"/></td>
+				<th bgcolor="orange" width="200"><spring:message code="message.board.list.title"/></td>
+				<th bgcolor="orange" width="150"><spring:message code="message.board.list.writer"/></td>
+				<th bgcolor="orange" width="150"><spring:message code="message.board.list.regDate"/></td>
+				<th bgcolor="orange" width="100"><spring:message code="message.board.list.cnt"/></td>					
 			</tr>
 	
 	 	<%
@@ -64,7 +69,7 @@
 		
 		</table>
 		<br>
-		<a href="insertBoard.do">새글등록</a>
+		<a href="insertBoard.do"><spring:message code="message.board.list.insertBoard"/></a>
 		
 	</center>
 
