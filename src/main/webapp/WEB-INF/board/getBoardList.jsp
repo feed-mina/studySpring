@@ -22,7 +22,7 @@
 		</h3>
 		
 		<!--  검색시작 -->
-		<form action="getBoardList.jsp" method="post">
+		<form action="getBoardList.do" method="post">
 			<table border="1" cellpadding="0" cellspacing="0" width="700" >
 				<tr>
 					<td align="rignt">
