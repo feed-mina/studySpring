@@ -1,0 +1,78 @@
+
+EL(Expression Languate) 이란?
+session 이나 request 내장 객체에 등록된 데이터를 JSP 파일에서 접근하기 위한 표현식
+
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+    
+
+  JSTL(JSP Standard Tag Library)이란?
+  JSP 파일에서 if, for, switch 등과 같은 자바 코드 대체하는 표준태그
+
+
+	<c:forEach var="board" items="${boardList }">
+		<tr>
+			<td>${board.seq }</td>
+			<td align="left"><a href="getBoard.do?seq=${board.seq }">${board.title }</a></td>
+			<td>${board.writer }</td>
+			<td>${board.regDate }</td>
+			<td>${board.cnt }</td>
+		</tr>
+		</c:forEach>
+
+=========================================================
+
+톰켓 서버도 스프링 객체 중 하나이고 톰켓 서버를 카날리나(catalina)라고 부르기도 한다. 
+톰켓객체가 생성이 될때 서블릿 엔진 (서블릿 컨테이너)로 생성 될때 web.xml파일을 로딩하게 된다. 서블릿 컨테이너만 실행이 되고 dispatcherServlet을 아직 생성하지 않았다.
+
+
+NFO : org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'action': initialization started
+INFO : org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'action-servlet': startup date [Sun Apr 30 12:58:13 KST 2023]; root of context hierarchy
+INFO : org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/action-servlet.xml]
+ERROR: org.springframework.web.servlet.DispatcherServlet - Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from ServletContext resource [/WEB-INF/action-servlet.xml]; nested exception is java.io.FileNotFoundException: Could not open ServletContext resource [/WEB-INF/action-servlet.xml]
+	
+
+스프링 컨테이너는 크게 두가지 환경이 있다. 바로 1. 서블릿 컨테이너 와 2. 스프링컨테이너 이다.
+
+톰켓 서버를 구동하면 톰켓 서버를 생성한 직후에 톰켓이 서블릿 컨테이너를 구동한다.
+
+톰켓서버를 구동하면 무조건 서블릿컨테이너 하나가 구동된다. 서블릿컨테이너는 web.xml을 실행한다. 그렇다고 dispatcherServlet을 만들지는 않는다. 서블릿컨테이너가 dispatcherServlet을 생성하는 시기는 브라우저로부터 .do 라는 요청이 들어올때 생성된다. 브라우저에서 login.do가 요청되면 dispatcherServlet이 생성된다. 서블릿객체가 생성되자마자 init 매서드가 오버라이딩 되어있다면 서블릿객체가 오버라이드된 init매서드를 호출한다. init 매서드에서 xmlWebApplicationContext 에서 스프링 컨테이너를 실행한다. 
+
+스프링개발자 들이 dispatcherServlet을 만들어주고 그 dispatcherServlet 안에 init매서드가 구현이 되어 있어서 그 init매서드 안에서 xmlWebApplicationContext을 실행시킬 수 있게 한다. 
+
+dispatcherServlet이 왜 xmlWebApplicationContext을 통해 스프링컨테이너 를 실행할까?  (왜 스프링컨테이너가 꼭 필요한걸까?)
+서블릿컨테이너는 구동될때 web.xml을 로딩한다. 서블릿컨테이너는 web.xml에 등록된 서블릿 객체만 생성할 수 있다. 서블릿만 web.xml에 등록할 수 있다. 
+
+서블릿 컨테이너는 xml파일이 로딩하는데 바로 그게 web.xml 이다. 서블릿 컨테이너 하나가 web.xml 을 로딩했다고 해서 dispatcherServlet을 로딩하지 않는다. (레이징 로딩 )
+서블릿 컨테이너는 브라우저로부터 .do 라는 요청이 들어왔을때 디스패치서블릿을 구동한다. 서블릿 컨테이너가 생성되고 브라우저에서 로그인 버튼을 누른후 login.do 가 
+dispatcherServlet이 init 매서드를 작동한다. 오버라이딩된 init 매서드를 호출한다. init매서드에서는 spring 컨테이너를 생성하고 있다. 
+xmlWebApplicationContext 는 웹에서 생성하는 스프링 컨테이너이다.
+dispatcherServlet이 xmlWebApplicationContext을 왜 생성할까?
+
+DispatcherServlet 클래스를 개발하고 init 매서드를 구현이 되어 있어서 init 매서드가 호출이 되면 web에서 사용하는 스프링컨테이너를 구동시킬 수 있다.
+dispatcherServlet에서 왜 스프링컨테이너를 실행하는걸까? 왜 스프링컨테이너가 꼭 필요한걸까? 서블릿컨테이너를 구동할때 web.xml이 실행된다.
+web.xml파일을 통해 서블릿컨테이너가 생성된다. web.xml에 등록된 서블릿 객체만 생성 할 수 있다. 
+
+컨트롤러를 구성하는 수많은 클래스 중에 유일하게 서블릿을 구성하는 서블릿은 dispatcherServlet 밖에 없다. 나머지 서블릿은 일반 클래스이다. 
+web.xml에 등록할수 있는 클래스는 dispatcherServlet밖에 없다. 서블릿컨테이너는 web.xml만 등록할 수 있다.
+
+브라우저에서 로그인 버튼을 눌러서 login.do 로 들어오면 dispatcherServlet객체가 메모리가 뜬다. dispatcherServlet은 모든 클라우드의 .do 를 받아들이는 프론트 서블릿일뿐이다.
+어떤 요청을 무슨 서블릿으로 매칭하는 역할을 하는건 HandlerMapping이다. HandlerMapping, Controller, viewResolver은 일반 클래스이다. 
+
+---- 스프링 컨테이너 
+
+HandlerMapping, Controller, viewResolver 도 매모리에 뜰 필요가 있다. 이 이유 때문에 스프링컨테이너가 필요하다. 
+스프링을 이용해서 webApplication을 개발한다고 한다면 종류가 다른 두개의 컨테이너가 필요한 것이다. (서블릿 컨테이너 와 스프링 컨테이너)
+스프링컨테이너는 서블릿이 아닌 일반 클래스의 객체를 생성하고 관리한다. 
+서블릿컨테이너는 누가 생성하는가? 톰켓 
+스프링컨테이너는 누가 생성하는가? dispatcherServlet
+
+전부 아파치에서 만들어준 톰켓이나 dispatcherServlet이 컨테이너를 생성해주는 것이다. 
+
+** 내가 만들지 않는 소스 영역에서 이해를 하고 이 이해를 바탕으로 컨테이너를 만들필요가 있다.
+톰켓서버 시작 -> 톰켓이 생성되는 직후에 무조건 서블릿컨테이너를 톰켓이 생성해주고 이때 web.xml 파일이 로딩된다. 하지만 dispatcherServlet은 아직은 생성되지 않다가 (레이지 로딩이니까)
+브라우저에서 .do 를 요청하면 dispatcherServlet을 서블릿컨테이너가 생성을 해주고 이때 init 매서드에서 spring컨테이너를 생성하게 된다.
+
+스프링컨테이너는 dispatcherServlet에서 상호작용할 HandlerMapping , 수많은 Controller, viewResolver 객체를 스프링컨테이너가 메모리에 띄운다. 스프링컨테이너를 실행하게 되려면 반드시 xml 환경설정이 필요하는데 그 파일이 action-servlet.xml 파일이다. 이 파일을 로딩을 해서 스프링 컨테이너가 로딩이 되면 된다.  
+action-servlet.xml 에서 bean등록을 하면 된다. 무엇을? HandlerMapping, Controller, viewResolver 를 bean 등록 한다.
+

@@ -1,0 +1,35 @@
+
+-- ViewResolver 
+ 예를 들면 getBoard, getBoardList 의 경우 url이 바로 접근 할 수 없게 해야한다. 
+ 그럴때 ViewResolver를 활용한다.
+ getBoardController 가 DAO를 이용해서 글 목록을 select하고 select한 글 목록을 Session에 담고  요청을 한다.
+ viewResolver를 사용하면 실제 데이터가 있지만 데이터를 보이지 않도록 할 수 있다.
+ 
+ 에러가 발생하면 알아챌수 있는데 에러가 발생하지 않으면 어렵다.
+ EL은 sesssion 이나 Request 이 둘 중 한 곳에 특정 이름으로 등록된 객체가 있는지, 만약 board라는 이름으로 등록된 객체가 있다면 board. 을 해서 board  되어있는 변수값을  jsp를 사용 할 수 있다. 하지만 board 객체가 session 이나 request에 없다면 안보이게 할 뿐이다. 
+ EL은 NullPointException을 안보이게 한다. 
+ 
+ 결론 : 브라우저(웹 클라이언트로 하여금 direct로 요청을 하게 하면 안된다.) .do 를 통해서 요청하게 해야 한다. viewResolver는 이 기능을 지원한다.
+ 
+ ViewResolver를 적용하기 앞서 WEB-INF 폴더 이해 
+ 톰켓서버가 스프링으로 만든 스프링 프로젝트를 쥐고 있다. 웹어플리케이션을 운영하는 모든 웹서버는 자신이 가지고 있는 , 자신이 관리하고 있는 프로젝트의 WEB-INF 폴더를 브라우저로부터 접근하지 못하도록 감추고 있다. 그 이유는 xml설정파일이나 라이브러리같은 굉장히 중요한 파일이 있다. 이렇게 중요한 resource들을 외부에서 접근하지 못하도록 하는 은닉할 수 있는 공간을 WEB-INF 폴더가 한다.
+ 
+ 웹어플리케이션에서 굉장히 중요한 파일은 web.xml인데 web.xml 파일은 WEB-INF폴더 밑으로 감춰져야 브라우저로부터 직접적으로 접근하는것을 방지 할 수 있다.
+ 
+ WEB-INF > New > 폴더 > board 폴더아래  getBoard 와 getBoardList 파일 이동  
+ 
+ <bean id="resourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="prefix" value="/WEB-INF/board/"/>
+	<property name="suffix" value=".jsp"/>
+</bean>
+ ViewResolver에서 중요한점은 setter인젝션을 두번 진행해야 한다는 점이다. 그래서 property에서 setprefix(접두사) , setsuffix (접미사 )
+ 기본형 타입을 사용하려면 문자열로 지정하면 된다. 또다른 객체의 id를 지정하려면 ref 를 사용한다. 
+ 
+ 만약에 viewResolver를 getBoardList로 지정하면 그 값 앞 뒤로 접두사로 경로를, 접미사로 .jsp 를 붙일 수 있다. 
+ 
+ ViewResolver를 이용하지 않겠다는 표현으로 forward 나 redirect를 앞 뒤에 붙어야 한다. 
+ 
+ 
+ 
+ 
+ 

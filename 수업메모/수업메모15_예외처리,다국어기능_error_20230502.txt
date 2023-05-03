@@ -1,0 +1,18 @@
+5월 02, 2023 2:39:01 오후 org.apache.catalina.core.StandardWrapperValve invoke
+심각: 경로 [/biz]의 컨텍스트 내의 서블릿 [action]을(를) 위한 Servlet.service() 호출이, 근본 원인(root cause)과 함께, 예외 [행 [8]에서 [/WEB-INF/board/login.jsp]을(를) 처리하는 중 예외 발생
+
+5: <html>
+6: <head>
+7: <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+8: <title><spring:message code="message.user.login.title"/></title>
+9: </head>
+10: <body>
+11: 	<center>
+
+
+Stacktrace:]을(를) 발생시켰습니다.
+javax.servlet.jsp.JspTagException: No message found under code 'message.user.login.title' for locale 'ko'.
+	at org.springframework.web.servlet.tags.MessageTag.doStartTagInternal(MessageTag.java:184)
+	
+	
+==> 에러이유 : 오타 ! 패키지명/파일명에서 message를 massage 로 잘못적음

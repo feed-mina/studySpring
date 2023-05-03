@@ -1,0 +1,44 @@
+
+정보: Initializing Spring FrameworkServlet 'action'
+INFO : org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'action': initialization started
+INFO : org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'action-servlet': startup date [Sun Apr 30 12:58:13 KST 2023]; root of context hierarchy
+INFO : org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/action-servlet.xml]
+ERROR: org.springframework.web.servlet.DispatcherServlet - Context initialization failed
+
+
+
+
+
+정보: Initializing Spring FrameworkServlet 'action'
+INFO : org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'action': initialization started
+INFO : org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'action-servlet': startup date [Sun Apr 30 15:32:23 KST 2023]; root of context hierarchy
+INFO : org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/action-servlet.xml]
+INFO : org.springframework.beans.factory.support.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@8189193: defining beans []; root of factory hierarchy
+INFO : org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'action': initialization completed in 1285 ms
+WARN : org.springframework.web.servlet.PageNotFound - No mapping found for HTTP request with URI [/biz/login.do] in DispatcherServlet with name 'action'
+
+
+===================
+
+
+INFO : org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'action': initialization started
+INFO : org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'action-servlet': startup date [Sun Apr 30 15:37:48 KST 2023]; root of context hierarchy
+INFO : org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/config/presentation-layer.xml]
+INFO : org.springframework.beans.factory.support.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@53c582c3: defining beans []; root of factory hierarchy
+INFO : org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'action': initialization completed in 1391 ms
+WARN : org.springframework.web.servlet.PageNotFound - No mapping found for HTTP request with URI [/biz/login.do] in DispatcherServlet with name 'action'
+
+===========오류 
+java.lang.ClassNotFoundException: org.h2.Driver 
+<!-- H2 데이터베이스 드라이버 -->
+<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+		<dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		    <version>2.1.214</version>
+		  <!--   <scope>test</scope> -->
+		  <!--  scope 태그가 있어서 h2 인식이 자꾸 안되었던것.  -->
+		</dependency>
+
+
+

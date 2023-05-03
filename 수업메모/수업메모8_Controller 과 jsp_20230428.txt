@@ -1,0 +1,25 @@
+--
+jsp와 javaBeans를 이용해서 게시판 만들기
+
+javaBeans에서 Bean은 객체를 의미한다. javaBeans는 자바 객체들을 의미한다. 
+데이터베이스와 연동된 객체들을 모델이라고 한다.
+DAO , VO 객체가 모델에 해당하는 객체이다.
+
+JSP파일은 Controller에 해당하는 자바 로직과 html(view)를 포함한 의미이다.
+모든 자바 코드를 컨트롤이라고 하지는 않는다. if, else, while,for , section-request/response를 컨트롤이라고 하지 않는다.
+
+** Controller 이란? (왕중요)
+1) 사용자 입력 정보 추출, 2) 모델을 이용한 DB 연동 처리 , 3) 화면 네비게이션 (화면이동)
+
+view는 디자인을 의미하고 html 과 css를 이용해서 화면을 구상할 수 있다. 
+
+
+모델1 : JSP > 모델2 : MVC > 모델3 : 스프링MVC
+
+
+ctrl + F11
+톰켓서버를 이용해서 구동
+서버를 바꿀일이 없다면 체크박스에 체크하기 
+
+
+
