@@ -75,4 +75,7 @@ base-package로 시작하는 모든 패캐지의 클레스를 스캔하라는 �
 	<property name="paramName" value="lang"/>
 </bean>
 </mvc:interceptors>
+
+<!-- 메시지 컴버터 등록 -->
+<mvc:annotation-driven/>
 </beans>

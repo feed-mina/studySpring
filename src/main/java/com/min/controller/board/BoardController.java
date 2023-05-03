@@ -1,6 +1,7 @@
 package com.min.controller.board;
 
 import java.io.File;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,6 +26,17 @@ public class BoardController {
 	
 	@Autowired 
 	private BoardService boardService;
+	
+	@RequestMapping("/dataTransform.do")
+	@ResponseBody 
+	public List<BoardVO> dataTransform(BoardVO vo) throws Exception{
+		// 응답프로트콜 바디에 json response.body를 할 수 있다. 
+		// 이클립스의 내장 브라우저는 데이터를 처리하는 기능이 없어 크롬 브라우저로 화면을 열기
+		
+		vo.setSearchCondition("TITLE");
+		vo.setSearchKeyword("");
+		return boardService.getBoardList(vo);
+	}
 	
 	@RequestMapping(value = "/insertBoard.do", method=RequestMethod.GET)
 	public String insertBoard() {
