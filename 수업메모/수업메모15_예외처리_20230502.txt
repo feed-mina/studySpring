@@ -1,0 +1,75 @@
+=== 예외처리
+ExceptionResolver등록
+
+어노테이션 기반의 예외처리와 xml 기반의 예외처리 
+presentatiln-layer.xml 
+
+property 태그를 사용한다는건 setter인젝션을 사용한다는 뜻, properties에 의존성 객체를 주입하려면 props 태그를 사용해야 한다.
+배열, list 객체에 list, set 태그에는 set , map태그에는 map , properties에는 props 
+props의 prop은 key와 value로 이루어져있다.
+@ControllerAdvice 와 @ExceptionHandler 사용
+
+
+<!-- ExceptionResolver등록 -->
+<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	<property name="exceptionMappings" >
+		<props>
+			<prop key="java.lang.ArithmeticException">common/arithmeticError</prop>
+			<prop key="java.lang.IllegalArgumentException">common/illegalArgumentError</prop>
+		</props>
+	</property>
+</bean>
+
+ExceptionResolver 도 ViewResolover가 참고되서 prefix로 /WEB-INF/ 폴더가 suffix로 .jsp 가 붙는다. 
+
+
+==== 다국어 처리
+
+하나의 화면을 여러 나라 언어로 보이게 하는 기능
+i18n 패키지가 다국어 처리에 사용된다.
+international 18개 나라
+
+확장자가 .properties 파일을 작성해야 한다. 
+massageSource_en.properties
+로케일에 해당한 정보를 _en , _ko 처럼 적는다.
+
+영어랑 다르게  한글이나 아시아권 나라의 언어는 유니코드로 자동으로 변환된다. 
+파일 > open with text > 저장할때 UTF-8
+help > Eclipse Marketplace
+
+properties 키워드로 검색
+Simple Properties Editor Install
+simplepropertiesEiditor 
+
+http://propedit.sourceforge.jp/eclipse/updates
+
+
+내가 만들지 않은 class를 bean 등록할때 id는 class의 끝에있는 두단어, 앞글자는 소문자로 바꿔서 저장  
+
+프로그램을 개발하다 보니까 어디까지가 패키지이고 어디까지가 파일이름인지 구분하기 어렵다..?
+-> 그래서 확장자를 언급하지 말고
+마지막 패키지 이름과 그 뒤 파일이름 사이의 .을 이용해서 마지막 패키지 이름의 파일이름을 읽어드리는구나 라고 인식한다.
+
+<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<property name="basenames">
+		<list>
+			<value>message.messageSource_en</value>
+			<value>message.messageSource_ko</value>
+		</list>
+	</property>
+</bean>
+
+새로운 언어가 수정하거나 빠지는 등의 일이 있을때 xml을 수정해야 되서 	<value>message.messageSource</value>
+
+messageSource 을 포함하는 모든 파일을 메모리에 동시에 로딩이 되기 때문에 유지보수를 생각하여 _언어명 을 생략하는 경우가 많다.
+
+starter line , message header, message body 
+브라우저의 로케일 정보가 브라우저의 locale header에 등록되어있다. 브라우저로부터 전송된 locale을 cookie-locale Resolver은 쿠키에, session locale Resolver은 session에, acceptheader Resolver은 매번 체크하기 때문에 성능이 느려질수있다. 장점으로는 브라우저 화면을 바꾸면 언어를 바꿀수 있다. fixedLocale은 특정 locale로 고정한다.
+
+session은 세션이 없어지기 전까지 브라우저에 세션을 저장한다. 
+
+
+
+
+
+

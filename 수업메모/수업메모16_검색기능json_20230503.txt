@@ -1,0 +1,31 @@
+
+내가 전달하고 싶은 데이터를 메타데이터 : (시작태그와 종료태그) 에 담아서 데이터를 주고 받았다.
+사람과 컴퓨터가 데이터를 인식할 수 있도록 xml을 사용하게 되었다
+원래 목적은 데이터를 전달이였지만 환경 설정에 더 많이 사용하게 되었다. 
+xml은 크고 무거운 단점이 있지만 json은 키:벨류타입으로 가볍고 작은 장점이 있어서
+이기종간의 데이터 포맷으로 xml과 json 둘다 사용하게되었다.
+
+select관련 매서드가 실행되면 VO객체를 json 데이터롭 변환을 해야 다양한 디바이스, 클라이언트로 데이터를 전달하게 되었다. 
+브라우저가 서버쪽에 db를 요청하면 서버쪽에서 브라우저쪽으로 html을 감싸서 보내는 방식에서
+자바객체를 json으로 감싸서 데이터를 보내는 방식으로 바꾼다.
+
+pom.xml에 <!-- jackson2 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.15.0</version>
+		</dependency> 추가
+		
+presentation-layer.xml에 메시지 컴퍼터 등록
+<mvc:annotation-driven/> 추가
+브라우저가 서버쪽에 검색을 요청, 서버는 검색결과를 http 프로토콜 응답에 , 정확히는 메시지 바디에 전달 
+지금까지는 html 형태로 감싸서 전달했다. 
+검색결과의 vo 객체를 메시지 바디 쪽에 json으로 변환해서 전달하면 이 json형태가 브라우저쪽에 보일수 있다. 
+json형태는 다양한 디바이스, 폴랫폼에서 가능하다. 
+
+
+
+응답프로트콜 바디에 json response.body를 할 수 있다. 
+이클립스의 내장 브라우저는 데이터를 처리하는 기능이 없어 크롬 브라우저로 화면을 열기
+	
+
