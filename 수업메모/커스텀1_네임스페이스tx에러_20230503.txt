@@ -1,0 +1,33 @@
+
+5월 03, 2023 4:24:30 오후 org.apache.catalina.core.StandardContext listenerStart
+심각: Context initialized 이벤트를 [org.springframework.web.context.ContextLoaderListener] 클래스의 인스턴스인 리스너에 전송하는 동안 예외 발생
+org.springframework.beans.factory.parsing.BeanDefinitionParsingException: Configuration problem: Unable to locate Spring NamespaceHandler for XML schema namespace [http://www.springframework.org/schema/tx]
+Offending resource: class path resource [business-layer.xml]
+
+
+ERROR: org.springframework.web.context.ContextLoader - Context initialization failed
+org.springframework.beans.factory.parsing.BeanDefinitionParsingException: Configuration problem: Unable to locate Spring NamespaceHandler for XML schema namespace [http://www.springframework.org/schema/tx]
+Offending resource: class path resource [business-layer.xml]
+
+
+
+WARN : org.springframework.core.type.classreading.AnnotationAttributesReadingVisitor - Failed to classload type while reading annotation metadata. This is a non-fatal error, but certain annotation metadata may be unavailable.
+java.lang.ClassNotFoundException: JsonIgnore
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1412)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1220)
+
+
+
+WARN : org.springframework.core.type.classreading.AnnotationAttributesReadingVisitor - Failed to classload type while reading annotation metadata. This is a non-fatal error, but certain annotation metadata may be unavailable.
+java.lang.ClassNotFoundException: JsonIgnore
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1412)
+
+
+WARN : org.springframework.core.type.classreading.AnnotationAttributesReadingVisitor - Failed to classload type while reading annotation metadata. This is a non-fatal error, but certain annotation metadata may be unavailable.
+java.lang.ClassNotFoundException: JsonIgnore
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1412)
+
+
+
+
+

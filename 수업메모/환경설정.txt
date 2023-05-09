@@ -18,7 +18,7 @@ https://www.springframework.org/schema/beans/spring-beans.xsd
 ctrl + shift + o 를 같이 누르면 import 부분을 정리한다.
 패키지 명을 누르고 > ctrl + shift + o 를 같이 누르면 import 부분을 정리한다.
 
-
+ctrl + shift + f : 소스 정리
 
 pom.xml
 maven 에서 제공하는 spring-jdbc 클래스를 등록
@@ -26,6 +26,33 @@ https://mvnrepository.com/artifact/org.springframework/spring-jdbc
 아파치에서 제공하는 commons-dbcp  클래스를 등록
  https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp
 
+전자정부 프레임워크 
+https://www.egovframe.go.kr
+https://www.egovframe.go.kr/home/sub.do?menuNo=41
+
+D:\eGovFrameDev-3.9.0-64bit
+svn 설치
+https://www.visualsvn.com
+https://DESKTOP-BSKEU0A/svn/Test/sample
+https://127.0.0.1/svn/Test/sample/trunk
+
+레포지토리생성
+Repositories > 새로만들기 >regural fsfs repository type > TEST (입력) > empty repository > All subversion users have read/write access/ >create > finish 
+
+포트번호 443? 또는 바꾸기
+
+사용자와 비밀번호 sample
+
+레포지토리 또는 프로젝트명 마우스 > properties 선택> 디폴트값 everyone 삭제 > add 버튼 클릭 > sample 선택후 권한 적용
+
+ToadforMySQL Freeware 7.3.1
+http://community-downloads.quest.com/toadsoft/MySQL/ToadforMySQL_Freeware_8.0.0.296.zip
+🐸 Toad for MySQL 사용자 연결 & 에디터 열기
+사용자 연결 : 등록된 사용자 더블클릭
+Edit 버튼 클릭해서 새 창(Editor) 열기 => sql 명령문 적는 공간
+단일 SQL문 실행 : F9
+Editor의 모든 SQL문 전체실행 : F5
+JDBC드라이버 다운로드
 
 
 

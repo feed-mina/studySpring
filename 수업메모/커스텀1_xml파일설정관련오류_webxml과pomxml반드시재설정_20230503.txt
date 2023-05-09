@@ -1,0 +1,209 @@
+
+5월 03, 2023 4:24:30 오후 org.apache.catalina.core.StandardContext listenerStart
+심각: Context initialized 이벤트를 [org.springframework.web.context.ContextLoaderListener] 클래스의 인스턴스인 리스너에 전송하는 동안 예외 발생
+org.springframework.beans.factory.parsing.BeanDefinitionParsingException: Configuration problem: Unable to locate Spring NamespaceHandler for XML schema namespace [http://www.springframework.org/schema/tx]
+Offending resource: class path resource [business-layer.xml]
+
+
+ERROR: org.springframework.web.context.ContextLoader - Context initialization failed
+org.springframework.beans.factory.parsing.BeanDefinitionParsingException: Configuration problem: Unable to locate Spring NamespaceHandler for XML schema namespace [http://www.springframework.org/schema/tx]
+Offending resource: class path resource [business-layer.xml]
+
+
+
+WARN : org.springframework.core.type.classreading.AnnotationAttributesReadingVisitor - Failed to classload type while reading annotation metadata. This is a non-fatal error, but certain annotation metadata may be unavailable.
+java.lang.ClassNotFoundException: JsonIgnore
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1412)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1220)
+
+
+
+WARN : org.springframework.core.type.classreading.AnnotationAttributesReadingVisitor - Failed to classload type while reading annotation metadata. This is a non-fatal error, but certain annotation metadata may be unavailable.
+java.lang.ClassNotFoundException: JsonIgnore
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1412)
+
+
+WARN : org.springframework.core.type.classreading.AnnotationAttributesReadingVisitor - Failed to classload type while reading annotation metadata. This is a non-fatal error, but certain annotation metadata may be unavailable.
+java.lang.ClassNotFoundException: JsonIgnore
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1412)
+
+WARN : org.springframework.web.context.support.XmlWebApplicationContext - Exception thrown from ApplicationListener handling ContextClosedEvent
+java.lang.IllegalStateException: ApplicationEventMulticaster not initialized - call 'refresh' before multicasting events via the context: Root WebApplicationContext: startup date [Wed May 03 18:13:49 KST 2023]; root of context hierarchy
+	at org.springframework.context.support.AbstractApplicationContext.getApplicationEventMulticaster(AbstractApplicationContext.java:337)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:324)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1025)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:988)
+	at org.springframework.web.context.ContextLoader.closeWebApplicationContext(ContextLoader.java:556)
+	at org.springframework.web.context.ContextLoaderListener.contextDestroyed(ContextLoaderListener.java:142)
+	at org.apache.catalina.core.StandardContext.listenerStop(StandardContext.java:4540)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5179)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:257)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:187)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:871)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:795)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:871)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:249)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:428)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:917)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:772)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:347)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:478)
+WARN : org.springframework.web.context.support.XmlWebApplicationContext - Exception thrown from LifecycleProcessor on context close
+java.lang.IllegalStateException: LifecycleProcessor not initialized - call 'refresh' before invoking lifecycle methods via the context: Root WebApplicationContext: startup date [Wed May 03 18:13:49 KST 2023]; root of context hierarchy
+	at org.springframework.context.support.AbstractApplicationContext.getLifecycleProcessor(AbstractApplicationContext.java:350)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1033)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:988)
+	at org.springframework.web.context.ContextLoader.closeWebApplicationContext(ContextLoader.java:556)
+	at org.springframework.web.context.ContextLoaderListener.contextDestroyed(ContextLoaderListener.java:142)
+	at org.apache.catalina.core.StandardContext.listenerStop(StandardContext.java:4540)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5179)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:257)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:187)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:871)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:795)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:871)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:249)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:428)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:917)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:772)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:347)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:478)
+INFO : org.springframework.beans.factory.support.DefaultListableBeanFactory - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@47c96f2c: defining beans [boardDAO,boardService,afterReturningAdvice,afterThrowingAdvice,aroundAdvice,logAdvice,homeController,userDAO,userService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.context.support.PropertySourcesPlaceholderConfigurer#0,dataSource,org.springframework.jdbc.core.JdbcTemplate#0,txManager,txAdvice,txPointcut,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+5월 03, 2023 6:13:51 오후 org.apache.coyote.AbstractProtocol start
+정보: 프로토콜 핸들러 ["http-nio-9091"]을(를) 시작합니다.
+5월 03, 2023 6:13:53 오후 org.apache.catalina.startup.Catalina start
+정보: 서버가 [10497] 밀리초 내에 시작되었습니다.
+
+
+WARN : org.springframework.web.context.support.XmlWebApplicationContext - Exception thrown from ApplicationListener handling ContextClosedEvent
+java.lang.IllegalStateException: ApplicationEventMulticaster not initialized - call 'refresh' before multicasting events via the context: Root WebApplicationContext: startup date 해결방법
+ChatGPT
+This warning indicates that an exception was thrown while handling the ContextClosedEvent in the XmlWebApplicationContext. The root cause of this exception is that the ApplicationEventMulticaster was not initialized, and therefore it was unable to handle the event.
+
+To resolve this issue, you should ensure that the XmlWebApplicationContext is properly initialized before closing it. Specifically, you should call the refresh() method on the context before calling the close() method. This will ensure that the ApplicationEventMulticaster is properly initialized and can handle the ContextClosedEvent.
+
+Here is an example of how to properly close an XmlWebApplicationContext:
+
+
+
+User
+WARN : org.springframework.web.context.support.XmlWebApplicationContext - Exception thrown from LifecycleProcessor on context close
+java.lang.IllegalStateException: LifecycleProcessor not initialized - call 'refresh' before invoking lifecycle methods via the context: Root WebApplicationContext: startup date [Wed May 03 18:30:31 KST 2023]; root of context hierarchy
+	at org.springframework.context.support.AbstractApplicationContext.getLifecycleProcessor(AbstractApplicationContext.java:350)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1033)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:988)
+ChatGPT
+This warning indicates that an exception was thrown while attempting to close the Spring ApplicationContext. Specifically, the exception message states that the LifecycleProcessor was not initialized, and that the refresh() method should be called before invoking lifecycle methods via the context.
+
+The LifecycleProcessor is responsible for managing the lifecycle of Spring-managed components, including starting and stopping them. If it is not properly initialized, the application context may not be able to cleanly shut down.
+
+To resolve this issue, you should ensure that the refresh() method is called on the context before invoking any lifecycle methods. This can be done by calling refresh() before calling close() on the context.
+
+
+
+User
+심각: 이전 오류들로 인해 컨텍스트 [/biz]의 시작이 실패했습니다.
+5월 03, 2023 6:30:33 오후 org.apache.catalina.core.ApplicationContext log
+정보: Closing Spring root WebApplicationContext
+INFO : org.springframework.web.context.support.XmlWebApplicationContext - Closing Root WebApplicationContext: startup date [Wed May 03 18:30:31 KST 2023]; root of context hierarchy
+WARN : org.springframework.web.context.support.XmlWebApplicationContext - Exception thrown from ApplicationListener handling ContextClosedEvent
+java.lang.IllegalStateException: ApplicationEventMulticaster not initialized - call 'refresh' before multicasting events via the context: Root WebApplicationContext: startup date [Wed May 03 18:30:31 KST 2023]; root of context hierarchy
+	at org.springframework.context.support.AbstractApplicationContext.getApplicationEventMulticaster(AbstractApplicationContext.java:337)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:324)
+ChatGPT
+이 오류는 Spring 웹 애플리케이션 컨텍스트가 시작되지 않았거나, 시작에 실패한 경우 발생할 수 있습니다. 이 오류는 다음과 같은 이유로 발생할 수 있습니다.
+
+XML 또는 자바 기반의 설정에서 올바르지 않은 구성이 포함되어 있는 경우
+의존성 문제가 있는 경우
+클래스 경로 문제가 있는 경우
+Spring 설정 파일의 경로가 올바르지 않은 경우
+이 오류를 해결하려면 다음을 수행할 수 있습니다.
+
+스프링 설정 파일을 다시 확인하여 문제를 해결하십시오.
+클래스 경로 문제가 있는 경우, 필요한 라이브러리를 추가하거나 버전을 업그레이드하십시오.
+스프링 설정 파일의 경로를 확인하고 문제가 있으면 수정하십시오.
+필요한 경우 Spring 웹 애플리케이션 컨텍스트를 다시 시작하십시오.
+
+
+
+
+User
+5월 03, 2023 6:30:32 오후 org.apache.catalina.core.StandardContext listenerStart
+심각: Context initialized 이벤트를 [org.springframework.web.context.ContextLoaderListener] 클래스의 인스턴스인 리스너에 전송하는 동안 예외 발생
+java.lang.NoClassDefFoundError: org/aspectj/weaver/tools/PointcutDesignatorHandler
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3166)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2309)
+	at org.springframework.core.type.StandardAnnotationMetadata.hasAnnotatedMetho
+ChatGPT
+이 로그는 애플리케이션 컨텍스트 초기화 중에 발생한 예외를 나타내며, org.springframework.web.context.ContextLoaderListener 클래스의 인스턴스인 리스너에 대한 Context initialized 이벤트 전송 중에 예외가 발생했다는 것을 나타냅니다.
+
+로그의 마지막 부분이 생략되어 있어서 정확한 원인을 알 수 없지만, NoClassDefFoundError는 클래스를 찾을 수 없을 때 발생하는 예외입니다. 이 경우 org/aspectj/weaver/tools/PointcutDesignatorHandler 클래스를 찾을 수 없다는 것을 나타냅니다.
+
+해결 방법으로는 해당 클래스가 포함된 라이브러리를 애플리케이션 클래스패스에 추가하거나, 클래스패스에 누락된 라이브러리를 추가하는 것입니다. 라이브러리를 추가하면 해당 클래스를 찾을 수 있으므로 NoClassDefFoundError 예외가 발생하지 않을 것입니다.
+
+
+
+
+
+User
+ERROR: org.springframework.web.context.ContextLoader - Context initialization failed
+java.lang.NoClassDefFoundError: org/aspectj/weaver/tools/PointcutDesignatorHandler
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3166)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2309)
+	at org.springframework.core.type.StandardAnnotationMetadata.hasAnno 해결방법
+ChatGPT
+이 에러는 org.aspectj.weaver 패키지의 클래스 PointcutDesignatorHandler가 클래스 경로에서 찾을 수 없을 때 발생합니다. 이 패키지는 AspectJ라는 AOP 프레임워크와 관련된 것입니다.
+
+해결 방법으로는 다음 중 하나를 시도해 볼 수 있습니다.
+
+AspectJ 라이브러리를 프로젝트에 추가합니다. Maven을 사용하는 경우, pom.xml 파일에 다음 의존성을 추가합니다.
+xml
+<dependency>
+  <groupId>org.aspectj</groupId>
+  <artifactId>aspectjweaver</artifactId>
+  <version>1.9.7</version>
+</dependency>
+Gradle을 사용하는 경우, build.gradle 파일에 다음 종속성을 추가합니다.
+
+AspectJ를 사용하지 않도록 설정합니다. AspectJ가 필요하지 않은 경우, 스프링 설정에서 AspectJ 관련 빈을 제거하거나, AspectJ 관련 어노테이션을 사용하지 않도록 변경합니다. 예를 들어, @Aspect, @Pointcut 등의 어노테이션을 사용하는 코드를 제거하거나 주석 처리합니다.
+
+스프링 버전을 업그레이드합니다. 때로는 스프링 버전이 너무 오래되어 AspectJ와의 호환성 문제가 발생할 수 있습니다. 스프링 버전을 최신 버전으로 업그레이드하면 이 문제를 해결할 수 있을 수 있습니다.
+
